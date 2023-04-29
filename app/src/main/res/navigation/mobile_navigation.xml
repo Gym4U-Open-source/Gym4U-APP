@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_posts">
+
+    <fragment
+        android:id="@+id/navigation_clients"
+        android:name="com.example.gym4u_movile_app.ui.clients.ClientsFragment"
+        android:label="@string/title_clients"
+        tools:layout="@layout/fragment_clients" />
+
+    <fragment
+        android:id="@+id/navigation_inbox"
+        android:name="com.example.gym4u_movile_app.ui.inbox.InboxFragment"
+        android:label="@string/title_inbox"
+        tools:layout="@layout/fragment_inbox" />
+
+    <fragment
+        android:id="@+id/navigation_posts"
+        android:name="com.example.gym4u_movile_app.ui.posts.PostsFragment"
+        android:label="@string/title_posts"
+        tools:layout="@layout/fragment_posts" />
+
+    <fragment
+        android:id="@+id/navigation_library"
+        android:name="com.example.gym4u_movile_app.LibraryFragment"
+        android:label="@string/title_library"
+        tools:layout="@layout/fragment_library" />
+
+    <fragment
+        android:id="@+id/navigation_community"
+        android:name="com.example.gym4u_movile_app.CommunityFragment"
+        android:label="@string/title_community"
+        tools:layout="@layout/fragment_community" />
+</navigation>
