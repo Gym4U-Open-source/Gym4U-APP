@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Sección 1: Información del usuario -->
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Username"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tvUsername"
+        app:layout_constraintTop_toBottomOf="@id/tvUsername" />
+
+    <!-- Sección 2: Imagen -->
+    <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_search"
+        app:layout_constraintBottom_toTopOf="@id/tvDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvEmail" />
+
+    <!-- Sección 3: Descripción -->
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Descripción del post"
+        app:layout_constraintBottom_toTopOf="@id/llComment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivImage" />
+
+    <!-- Sección 4: Comentarios -->
+    <LinearLayout
+        android:id="@+id/llComment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="24dp"
+        android:gravity="start"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tvNumComments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_message"
+            android:drawablePadding="16dp"
+            android:text="0 comentarios"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
