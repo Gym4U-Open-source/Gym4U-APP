@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Gym4UMovileAPP"
         tools:targetApi="31">
         <activity
+            android:name=".add_exercise"
+            android:exported="false" />
+        <activity
+            android:name=".new_workout"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name">
