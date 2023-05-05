@@ -11,4 +11,9 @@
     <string name="hello_blank_fragment">This is Library Fragment</string>
     <string name="this_is_community_fragment">This is Community Fragment</string>
     <string name="this_is_library_fragment">This is Library Fragment</string>
+    <string name="rutina_1">RUTINA 1</string>
+    <string name="rutina_3">RUTINA 3</string>
+    <string name="rutina_4">RUTINA 4</string>
+    <string name="rutina_5">RUTINA 5</string>
+    <string name="rutina_2">RUTINA 2</string>
 </resources>
