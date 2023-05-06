@@ -1,15 +1,15 @@
-package com.example.gym4u_movile_app
+package com.example.gym4u_movile_app.ui.library
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.gym4u_movile_app.ARG_PARAM1
+import com.example.gym4u_movile_app.ARG_PARAM2
+import com.example.gym4u_movile_app.R
+import com.example.gym4u_movile_app.databinding.FragmentLibraryBinding
 
 /**
  * A simple [Fragment] subclass.
@@ -17,6 +17,11 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class LibraryFragment : Fragment() {
+
+    private var _binding: FragmentLibraryBinding?= null
+
+    private val binding get()= _binding!!
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,7 +39,27 @@ class LibraryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
+        val libraryViewModel= ViewModelProvider(this).get(LibraryViewModel::class.java)
+
+        _binding = FragmentLibraryBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+
+
+
         return inflater.inflate(R.layout.fragment_library, container, false)
+
+
+
+    }
+
+    private fun initview() {
+
+    }
+
+    private fun loadlibrary() {
+        TODO("Not yet implemented")
     }
 
     companion object {
