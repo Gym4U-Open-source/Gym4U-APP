@@ -12,4 +12,9 @@
     <string name="this_is_community_fragment">This is Community Fragment</string>
     <string name="this_is_library_fragment">This is Library Fragment</string>
     <string name="et_filter_value">Look for your interest posts</string>
+    <string name="add_exercise">Add exercise</string>
+    <string name="time_per_set">Time per set</string>
+    <string name="sets">Sets</string>
+    <string name="write_exercise">Write exercise</string>
+    <string name="addExercise">Add exercise</string>
 </resources>
