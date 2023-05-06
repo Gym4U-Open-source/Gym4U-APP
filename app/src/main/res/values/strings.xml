@@ -7,9 +7,9 @@
     <string name="title_community">Community</string>
     <string name="library">Library</string>
     <string name="community">Community</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">This is Library Fragment</string>
     <string name="this_is_community_fragment">This is Community Fragment</string>
     <string name="this_is_library_fragment">This is Library Fragment</string>
     <string name="et_filter_value">Look for your interest posts</string>
+    <string name="et_filter_chat">Search message or client</string>
 </resources>

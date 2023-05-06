@@ -1,42 +1,58 @@
 package com.example.gym4u_movile_app.ui.inbox
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gym4u_movile_app.databinding.FragmentInboxBinding
+import com.example.gym4u_movile_app.entities.BaseResponse
+import com.example.gym4u_movile_app.entities.Follower
+import com.example.gym4u_movile_app.services.FollowerService
+import com.example.gym4u_movile_app.util.RetrofitBuilder
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class InboxFragment : Fragment() {
 
-    private var _binding: FragmentInboxBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentInboxBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val inboxViewModel =
-            ViewModelProvider(this).get(InboxViewModel::class.java)
-
-        _binding = FragmentInboxBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textDashboard
-        inboxViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+        binding = FragmentInboxBinding.inflate(inflater, container, false)
+        loadMessages()
+        return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+
+    private fun loadMessages() {
+        RetrofitBuilder.build()
+            .create(FollowerService::class.java)
+            .getFollowers(2)
+            .enqueue(object : Callback<BaseResponse<Follower>> {
+                override fun onResponse(
+                    call: Call<BaseResponse<Follower>>,
+                    response: Response<BaseResponse<Follower>>
+                ) {
+                    if(response.isSuccessful) {
+                        binding.rvChats.layoutManager = LinearLayoutManager(context)
+                        binding.rvChats.adapter = InboxAdapter(response.body()!!.content)
+                    }
+
+                }
+
+                override fun onFailure(call: Call<BaseResponse<Follower>>, t: Throwable) {
+                    Log.d("inboxFragment", t.toString())
+                }
+
+            })
     }
+
 }
