@@ -28,7 +28,8 @@ class ClientsFragment : Fragment() {
         _binding = FragmentClientsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
+        //val textView: TextView = binding.textHome
+        val textView: TextView = binding.editTextText
         clientsViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
