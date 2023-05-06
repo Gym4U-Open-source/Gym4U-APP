@@ -15,7 +15,22 @@
         android:id="@+id/navigation_inbox"
         android:name="com.example.gym4u_movile_app.ui.inbox.InboxFragment"
         android:label="@string/title_inbox"
-        tools:layout="@layout/fragment_inbox" />
+        tools:layout="@layout/fragment_inbox" >
+
+        <action
+            android:id="@+id/action_navigation_inbox_to_inbox_navigation"
+            app:destination="@id/navigation_conversation"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+
+            app:popUpTo="@id/navigation_inbox"
+            app:restoreState="true"
+            app:popUpToSaveState="true"/>
+        <!-- to restore it -->
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_posts"
@@ -34,4 +49,16 @@
         android:name="com.example.gym4u_movile_app.CommunityFragment"
         android:label="@string/title_community"
         tools:layout="@layout/fragment_community" />
+
+    <fragment
+        android:id="@+id/navigation_conversation"
+        android:name="com.example.gym4u_movile_app.ui.inbox.ConversationFragment"
+        android:label="@string/title_inbox"
+        tools:layout="@layout/fragment_conversation">
+        <argument
+            android:name="coachFollower"
+            app:argType="com.example.gym4u_movile_app.entities.Follower" />
+    </fragment>
+
+
 </navigation>
