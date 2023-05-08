@@ -28,11 +28,9 @@ class ClientsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         _binding = FragmentClientsBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        val rootView = inflater.inflate(R.layout.fragment_clients, container, false)
-        val rvClients = rootView.findViewById<RecyclerView>(R.id.rvClients)
 
         loadClients()
         initView()
@@ -46,7 +44,6 @@ class ClientsFragment : Fragment() {
         // Configurar el LayoutManager
         val layoutManager = LinearLayoutManager(context)
         rvClients.layoutManager = layoutManager
-
         rvClients.adapter = clientAdapter
     }
 
