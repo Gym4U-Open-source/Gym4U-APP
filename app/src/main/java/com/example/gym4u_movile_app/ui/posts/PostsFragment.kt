@@ -63,7 +63,7 @@ class PostsFragment : Fragment() {
     private fun loadPosts() {
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://gym4u-api-384017.rj.r.appspot.com/")
+            .baseUrl("http://localhost:3000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

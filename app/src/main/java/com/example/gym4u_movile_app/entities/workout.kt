@@ -6,3 +6,4 @@ class workout(
     val exercise2: String,
     val exercise3: String
 )
+

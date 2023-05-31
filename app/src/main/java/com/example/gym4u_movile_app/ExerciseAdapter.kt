@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.entities.Exercise
 
-class ExerciseAdapter (var exercises: ArrayList<Exercise>):
+class ExerciseAdapter (private var exercises: ArrayList<Exercise>):
     RecyclerView.Adapter<ExercisePrototype1>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExercisePrototype1 {
         val view = LayoutInflater
@@ -34,9 +34,9 @@ class ExercisePrototype(itemView: View): RecyclerView.ViewHolder(itemView) {
 
     fun bind(exercise: Exercise){
         val aux: String= "time"
-        val aux1: Int = 10
+        val aux1: Int = 100
         //tvNameExercise.text = exercise.name
-        tvTimerExercise.text = aux
-        tvSetsExercise.text = aux1.toString()
+        tvTimerExercise.text = exercise.name
+        tvSetsExercise.text = exercise.approach
     }
 }

@@ -13,7 +13,7 @@ class ExercisePrototype1(itemView: View): RecyclerView.ViewHolder(itemView){
 
 
     fun bind(exercise: Exercise){
-        val Sets = 10
+        val Sets = 100
         val Timer = 2
         tvNameExercise.text= exercise.name
         tvSetsExercise.text= Sets.toString()

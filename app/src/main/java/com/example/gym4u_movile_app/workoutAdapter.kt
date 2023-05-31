@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gym4u_movile_app.entities.Exercise
+import com.example.gym4u_movile_app.entities.WORKOUTT
 import com.example.gym4u_movile_app.entities.workout
 
 class workoutAdapter(private val workout: ArrayList<workout>):
@@ -46,36 +46,60 @@ class WorkoutPrototype(itemView: View): RecyclerView.ViewHolder(itemView){
 }
 
 
-//class ExerciseAdapter (var exercises: ArrayList<Exercise>):
-//    RecyclerView.Adapter<ExercisePrototype1>() {
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExercisePrototype1 {
-//        val view = LayoutInflater
-//            .from(parent.context)
-//            .inflate(R.layout.prototype_exercises, parent,false);
-//        return  ExercisePrototype1(view)
-//    }
-//
-//    override fun onBindViewHolder(holder: ExercisePrototype1, position: Int) {
-//        holder.bind(exercises.get(position))
-//    }
-//
-//    override fun getItemCount(): Int {
-//        return exercises.size
-//    }
-//
-//}
-//
-//
-//class ExercisePrototype(itemView: View): RecyclerView.ViewHolder(itemView) {
-//    val tvTimerExercise = itemView.findViewById<TextView>(R.id.tvTimerExercise)
-//    val tvSetsExercise = itemView.findViewById<TextView>(R.id.tvSetsExercise)
-//    val tvNameExercise = itemView.findViewById<TextView>(R.id.tvNameExercise)
-//
-//    fun bind(exercise: Exercise){
-//        val aux: String= "time"
-//        val aux1: Int = 10
-//        //tvNameExercise.text = exercise.name
-//        tvTimerExercise.text = aux
-//        tvSetsExercise.text = aux1.toString()
-//    }
-//}
+
+
+class WORKOUTSAdapter(private val WORKOUTS: ArrayList<WORKOUTT>):
+    RecyclerView.Adapter<WORKOUTSPrototype>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WORKOUTSPrototype {
+        val view = LayoutInflater
+            .from(parent.context)
+            .inflate(R.layout.prototype_workout, parent,false);
+        return  WORKOUTSPrototype(view)
+    }
+
+    override fun getItemCount(): Int {
+        return WORKOUTS.size
+    }
+
+    override fun onBindViewHolder(holder: WORKOUTSPrototype, position: Int) {
+        holder.bind(WORKOUTS.get(position))
+    }
+
+}
+
+
+class WORKOUTSPrototype(itemView: View): RecyclerView.ViewHolder(itemView){
+
+    val tvTituloWorkout = itemView.findViewById<TextView>(R.id.tvTituloWorkout)
+    val tvExercise1 = itemView.findViewById<TextView>(R.id.tvExercise1)
+    val tvExercise2 = itemView.findViewById<TextView>(R.id.tvExercise2)
+    val tvExercise3 = itemView.findViewById<TextView>(R.id.tvExercise3)
+
+    fun bind(WORKOUTS: WORKOUTT){
+        if (WORKOUTS.routines.size>=3){
+            tvTituloWorkout.text= WORKOUTS.name
+            tvExercise1.text= WORKOUTS.routines[0].exercise.name
+            tvExercise2.text= WORKOUTS.routines[1].exercise.name
+            tvExercise3.text = WORKOUTS.routines[2].exercise.name
+        }
+        else if(WORKOUTS.routines.size==2){
+            tvTituloWorkout.text= WORKOUTS.name
+            tvExercise1.text= WORKOUTS.routines[0].exercise.name
+            tvExercise2.text= WORKOUTS.routines[1].exercise.name
+            tvExercise3.text = ""
+        }
+        else if(WORKOUTS.routines.size==1){
+            tvTituloWorkout.text= WORKOUTS.name
+            tvExercise1.text= WORKOUTS.routines[0].exercise.name
+            tvExercise2.text= ""
+            tvExercise3.text = ""
+        }
+        else{
+            tvTituloWorkout.text= WORKOUTS.name
+            tvExercise1.text= ""
+            tvExercise2.text= ""
+            tvExercise3.text = ""
+        }
+    }
+
+}

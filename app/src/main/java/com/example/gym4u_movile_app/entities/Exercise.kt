@@ -7,11 +7,15 @@ package com.example.gym4u_movile_app.entities
 //    )
 
 class Exercise(
-    val id: Long,
-    val approach: String,
-    val url: String,
-    val category: Int,
-    val name: String,
-    val tag_id: Int,
-    val user_id: Int
+    var id: Int,//id
+    var category: String,//
+    var approach: String,
+    var name: String,
+    var assetUrl: String,
+    //var tag: Tag
 )
+
+class Tag (
+    var id: Int,
+    var name: String
+        )
