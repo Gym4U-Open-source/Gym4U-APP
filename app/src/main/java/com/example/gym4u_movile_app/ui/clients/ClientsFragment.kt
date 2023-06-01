@@ -4,15 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.gym4u_movile_app.R
 import com.example.gym4u_movile_app.databinding.FragmentClientsBinding
-import com.example.gym4u_movile_app.ui.clients.Client
-import com.example.gym4u_movile_app.ui.clients.ClientAdapter
+import com.example.gym4u_movile_app.entities.Client
+
 class ClientsFragment : Fragment() {
 
     private var _binding: FragmentClientsBinding? = null
@@ -28,11 +24,9 @@ class ClientsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         _binding = FragmentClientsBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        val rootView = inflater.inflate(R.layout.fragment_clients, container, false)
-        val rvClients = rootView.findViewById<RecyclerView>(R.id.rvClients)
 
         loadClients()
         initView()
@@ -46,8 +40,11 @@ class ClientsFragment : Fragment() {
         // Configurar el LayoutManager
         val layoutManager = LinearLayoutManager(context)
         rvClients.layoutManager = layoutManager
-
         rvClients.adapter = clientAdapter
+    }
+
+    private fun clientFragment() {
+
     }
 
     private fun loadClients() {

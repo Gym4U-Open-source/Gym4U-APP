@@ -14,7 +14,54 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="25dp"
         tools:text="Name" />
+
+    <ImageButton
+        android:id="@+id/btDelete"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="15dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/basura_24" />
+
+    <ImageButton
+        android:id="@+id/btWrite"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="5dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toStartOf="@+id/btDelete"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lapiz_24" />
+
+    <ImageButton
+        android:id="@+id/btView"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="5dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toStartOf="@+id/btWrite"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ojo_24" />
+
+    <ImageButton
+        android:id="@+id/btMessage"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="5dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toStartOf="@+id/btView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/comentario_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
