@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.R
 import com.example.gym4u_movile_app.entities.Client
 
-class ClientAdapter(var clients: ArrayList<Client>): RecyclerView.Adapter<ClientPrototype>() {
+class ClientAdapter(var clients: List<Client>): RecyclerView.Adapter<ClientPrototype>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientPrototype {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.prototyoe_client, parent, false)
         return ClientPrototype(view)
@@ -43,7 +43,7 @@ class ClientPrototype(itemView: View): RecyclerView.ViewHolder(itemView) {
     val tvName = itemView.findViewById<TextView>(R.id.tvName)
     val btView = itemView.findViewById<ImageButton>(R.id.btView)
     fun bind(client: Client){
-        tvName.text = client.name
+        tvName.text = client.name + " " + client.lastName
     }
 
 }
