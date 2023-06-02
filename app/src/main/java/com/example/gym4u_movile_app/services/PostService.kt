@@ -7,6 +7,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface PostService {
-    @GET("posts")
+    @GET("api/v1/posts")
     fun getAll(): Call<BaseResponse<Post>>
 }
