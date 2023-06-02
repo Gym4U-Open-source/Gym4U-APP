@@ -14,10 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gym4UMovileAPP"
         tools:targetApi="31">
-<!--        <meta-data-->
-<!--            android:name="com.google.android.actions"-->
-<!--            android:resource="@xml/prototype_workout" />-->
-
+        <activity
+            android:name=".List_Workout"
+            android:exported="false" />
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.actions" -->
+        <!-- android:resource="@xml/prototype_workout" /> -->
         <activity
             android:name=".add_exercise"
             android:exported="false" />
