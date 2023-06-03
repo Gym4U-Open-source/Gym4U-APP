@@ -15,11 +15,11 @@
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/ajustes_24"
-        app:layout_constraintEnd_toStartOf="@+id/tvFullName4"
+        app:layout_constraintEnd_toStartOf="@+id/tvOption"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <TextView
-        android:id="@+id/tvFullName3"
+        android:id="@+id/tvWorkout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <TextView
-        android:id="@+id/tvFullName4"
+        android:id="@+id/tvOption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -73,6 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvClientName" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvClientWorkout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="28dp"

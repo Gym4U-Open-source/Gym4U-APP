@@ -3,6 +3,7 @@ package com.example.gym4u_movile_app.ui.clients
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,23 +13,30 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.MainActivity
 import com.example.gym4u_movile_app.R
 import com.example.gym4u_movile_app.databinding.FragmentClientBinding
 import com.example.gym4u_movile_app.databinding.FragmentClientsBinding
+import com.example.gym4u_movile_app.entities.BaseResponse
 import com.example.gym4u_movile_app.entities.Client
+import com.example.gym4u_movile_app.entities.ClientWorkout
+import com.example.gym4u_movile_app.services.ClientWorkoutService
 import kotlinx.coroutines.internal.artificialFrame
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class ClientFragment : Fragment() {
 
     lateinit var rootView: View
     lateinit var tvClientName: TextView
     lateinit var ibReturn: ImageButton
+    lateinit var rvClientWorkout: RecyclerView
+    private var clientId: Long? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,9 +52,13 @@ class ClientFragment : Fragment() {
 
         //val navController = Navigation.findNavController(requireView())
 
+        rvClientWorkout = view.findViewById<RecyclerView>(R.id.rvClientWorkout)
+
         ibReturn = view.findViewById<ImageButton>(R.id.ibReturn)
         tvClientName = view.findViewById<TextView>(R.id.tvClientName)
         initClient(view.context)
+
+        loadWorkouts(view.context)
 
         ibReturn.setOnClickListener {
 
@@ -72,6 +84,36 @@ class ClientFragment : Fragment() {
 
     }
 
+    private fun loadWorkouts(context: Context?) {
+
+        val clientIdLong: Long = clientId?.toLong() ?:0L
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://gym4u-api-388317.rj.r.appspot.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val clientWorkoutService: ClientWorkoutService
+        clientWorkoutService = retrofit.create(ClientWorkoutService::class.java)
+        val request = clientWorkoutService.getWorkouts(clientIdLong)
+
+        request.enqueue(object : Callback<BaseResponse<ClientWorkout>>{
+            override fun onResponse(call: Call<BaseResponse<ClientWorkout>>, response: Response<BaseResponse<ClientWorkout>>) {
+                if(response.isSuccessful){
+                    val clientWorkouts: List<ClientWorkout> = response.body()!!.content
+                    rvClientWorkout.adapter = ClientWorkoutAdapter(clientWorkouts)
+                    rvClientWorkout.layoutManager = LinearLayoutManager(context)
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<ClientWorkout>>, t: Throwable) {
+                Log.d("Activity Fail", "Error: "+t.toString())
+            }
+
+        })
+
+    }
+
     private fun initClient(context: Context){
         val intent = requireActivity().intent
 
@@ -81,6 +123,7 @@ class ClientFragment : Fragment() {
         if (clientObject != null) {
             val fullName = "${clientObject.name} ${clientObject.lastName}"
             tvClientName.text = fullName
+            clientId = clientObject.id
         } else {
             tvClientName.text = "No se encontró ningún cliente"
         }
