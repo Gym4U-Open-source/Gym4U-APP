@@ -6,6 +6,5 @@ class ApiPaths {
         const val USERS = "${BASE_URL}users/"
         const val CONVERSATIONS = "${BASE_URL}conversations/"
         const val MESSAGES = "${BASE_URL}messages/"
-        const val CLIENTS = "${BASE_URL}profiles/"
     }
 }

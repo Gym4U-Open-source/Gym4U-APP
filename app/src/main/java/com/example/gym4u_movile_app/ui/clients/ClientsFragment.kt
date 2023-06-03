@@ -1,14 +1,17 @@
 package com.example.gym4u_movile_app.ui.clients
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gym4u_movile_app.R
 import com.example.gym4u_movile_app.databinding.FragmentClientsBinding
 import com.example.gym4u_movile_app.entities.BaseResponse
 import com.example.gym4u_movile_app.entities.Client
@@ -20,61 +23,27 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ClientsFragment : Fragment() {
+class ClientsFragment : Fragment(), ClientAdapter.OnItemClickListener {
 
-    private var _binding: FragmentClientsBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
     lateinit var clientRecyclerView: RecyclerView
+    private var currentFragment: Fragment? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        _binding = FragmentClientsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        clientRecyclerView = binding.rvClients
-        loadClients()
-        //initView()
-
-        return root
+        return inflater.inflate(R.layout.fragment_clients,container,false)
     }
 
-    /*
-    private fun initView() {
-        val rvClients = binding.rvClients
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        // Configurar el LayoutManager
-        val layoutManager = LinearLayoutManager(context)
-        rvClients.layoutManager = layoutManager
-        rvClients.adapter = clientAdapter
-    }
-
-     */
-
-    private fun clientFragment() {
+        clientRecyclerView = view.findViewById<RecyclerView>(R.id.rvClients)
+        loadClients(view.context)
 
     }
 
-    /*
-    private fun loadClients() {
-        clients.add(Client("Juan Pablo Palacios"))
-        clients.add(Client("Breydi Ramos"))
-        clients.add(Client("Susana Villaran"))
-        clients.add(Client("Alberto Fujimori"))
-        clients.add(Client("Keiko Fujimori"))
-    }
-
-     */
-
-    private fun loadClients() {
-
-        val context: Context = requireContext()
+    private fun loadClients(context: Context) {
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://gym4u-api-388317.rj.r.appspot.com/")
@@ -89,7 +58,7 @@ class ClientsFragment : Fragment() {
             override fun onResponse(call: Call<BaseResponse<Client>>, response: Response<BaseResponse<Client>>) {
                 if(response.isSuccessful){
                     val clients: List<Client> = response.body()!!.content
-                    clientRecyclerView.adapter = ClientAdapter(clients)
+                    clientRecyclerView.adapter = ClientAdapter(clients, this@ClientsFragment)
                     clientRecyclerView.layoutManager = LinearLayoutManager(context)
                 }
             }
@@ -99,12 +68,39 @@ class ClientsFragment : Fragment() {
             }
 
         })
-
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun OnItemClicked(client: Client) {
+        /*
+        val intent = Intent(context, ClientFragment::class.java)
+        intent.putExtra("Client", client)
+        startActivity(intent)
+         */
+
+
+        val newFragment = ClientFragment.newInstance(client)
+        val fragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment_container, newFragment)
+        //fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+
+
+        /*
+        val clientFragment = ClientFragment()
+        val bundle = Bundle().apply {
+            putSerializable("client", client)
+        }
+        clientFragment.arguments = bundle
+
+        val fragmentManager = (holder.itemView.context as AppCompatActivity).supportFragmentManager
+        fragmentManager.beginTransaction()
+            .replace(R.id.container, clientFragment)
+            .addToBackStack(null)
+            .commit()
+
+         */
+
     }
 
 

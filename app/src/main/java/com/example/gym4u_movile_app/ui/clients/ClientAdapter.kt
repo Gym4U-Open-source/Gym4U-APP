@@ -11,10 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.R
 import com.example.gym4u_movile_app.entities.Client
 
-class ClientAdapter(var clients: List<Client>): RecyclerView.Adapter<ClientPrototype>() {
+class ClientAdapter(var clients: List<Client>, val itemClickListener: OnItemClickListener): RecyclerView.Adapter<ClientPrototype>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientPrototype {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.prototyoe_client, parent, false)
         return ClientPrototype(view)
+    }
+
+    interface OnItemClickListener{
+        fun OnItemClicked(client: Client)
     }
 
     override fun getItemCount(): Int {
@@ -26,6 +30,13 @@ class ClientAdapter(var clients: List<Client>): RecyclerView.Adapter<ClientProto
 
 
         holder.btView.setOnClickListener{
+            val client = clients[position]
+            itemClickListener.OnItemClicked(client)
+        }
+
+
+        /*
+        holder.btView.setOnClickListener{
             val clientFragment = ClientFragment()
             val fragmentManager = (holder.itemView.context as AppCompatActivity).supportFragmentManager
             fragmentManager.beginTransaction()
@@ -33,6 +44,8 @@ class ClientAdapter(var clients: List<Client>): RecyclerView.Adapter<ClientProto
                 .addToBackStack(null)
                 .commit()
         }
+
+         */
 
          
     }
