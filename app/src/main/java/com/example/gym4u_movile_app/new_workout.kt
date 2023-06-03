@@ -4,8 +4,10 @@ package com.example.gym4u_movile_app
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.entities.BaseResponse
@@ -40,6 +42,7 @@ class new_workout : AppCompatActivity() {
             transaction.add(R.id.container, fragment)  // Agrega el fragmento al contenedor
             transaction.commit()
         }
+
     }
 
     private fun InitView() {

@@ -23,8 +23,8 @@ class List_Workout : AppCompatActivity() {
 
     var workouts = ArrayList<WORKOUTT>();//1
     var adapterWorkout = WORKOUTSAdapter(workouts);//2
-    //private lateinit var handler: Handler
-    //private lateinit var updateTextRunnable: Runnable
+    private lateinit var handler: Handler
+    private lateinit var updateTextRunnable: Runnable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,23 +40,24 @@ class List_Workout : AppCompatActivity() {
             startActivity(intent)
         }
 
-//        val tvCount = findViewById<TextView>(R.id.countWorkouts2)
-//        //tvCount.text = workouts.size.toString()
-//        handler = Handler()
-//        updateTextRunnable = object : Runnable {
-//            override fun run() {
-//                // Actualiza el contenido del TextView
-//                tvCount?.text = workouts.size.toString()
-//
-//                // Programa la próxima actualización después de un intervalo de tiempo
-//                handler.postDelayed(this, 1000) // 1000 ms = 1 segundo
-//            }
-//        }
-//
-//        super.onStart()
-//
-//        // Inicia la primera actualización después de un intervalo de tiempo
-//        handler.postDelayed(updateTextRunnable, 1000) // 1000 ms = 1 segundo
+        val tvCount = findViewById<TextView>(R.id.countWorkouts2)
+        //tvCount.text = workouts.size.toString()
+        handler = Handler()
+        updateTextRunnable = object : Runnable {
+            override fun run() {
+                // Actualiza el contenido del TextView
+                tvCount?.text = workouts.size.toString()
+
+                // Programa la próxima actualización después de un intervalo de tiempo
+                handler.postDelayed(this, 1000) // 1000 ms = 1 segundo
+            }
+        }
+
+        super.onStart()
+
+        // Inicia la primera actualización después de un intervalo de tiempo
+        handler.postDelayed(updateTextRunnable, 1000) // 1000 ms = 1 segundo
+
     }
 
     private fun initView() {
