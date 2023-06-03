@@ -23,4 +23,9 @@
     <string name="fuerza">Fuerza</string>
     <string name="levantimiento_de_pesas">Levantimiento de pesas</string>
     <string name="et_filter_chat">Search message or client</string>
+    <string name="primary_focus">Primary Focus</string>
+    <string name="category">Category</string>
+    <string name="video">Video</string>
+    <string name="add_exercise">Add exercise</string>
+    <string name="name">Name</string>
 </resources>
