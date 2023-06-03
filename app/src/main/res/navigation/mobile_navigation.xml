@@ -59,6 +59,15 @@
             android:name="coachFollower"
             app:argType="com.example.gym4u_movile_app.entities.Follower" />
     </fragment>
+    <fragment
+        android:id="@+id/clientFragment"
+        android:name="com.example.gym4u_movile_app.ui.clients.ClientFragment"
+        android:label="fragment_client"
+        tools:layout="@layout/fragment_client" >
+        <action
+            android:id="@+id/action_clientFragment_to_navigation_clients"
+            app:destination="@id/navigation_clients" />
+    </fragment>
 
 
 </navigation>

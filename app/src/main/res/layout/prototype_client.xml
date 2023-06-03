@@ -30,18 +30,6 @@
         app:srcCompat="@drawable/basura_24" />
 
     <ImageButton
-        android:id="@+id/btWrite"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="5dp"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toStartOf="@+id/btDelete"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/lapiz_24" />
-
-    <ImageButton
         android:id="@+id/btView"
         android:layout_width="20dp"
         android:layout_height="20dp"
@@ -49,7 +37,7 @@
         android:layout_marginEnd="5dp"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toStartOf="@+id/btWrite"
+        app:layout_constraintEnd_toStartOf="@+id/btDelete"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ojo_24" />
 

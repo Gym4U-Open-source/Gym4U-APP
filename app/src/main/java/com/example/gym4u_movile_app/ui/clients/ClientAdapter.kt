@@ -1,9 +1,9 @@
 package com.example.gym4u_movile_app.ui.clients
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +13,7 @@ import com.example.gym4u_movile_app.entities.Client
 
 class ClientAdapter(var clients: List<Client>, val itemClickListener: OnItemClickListener): RecyclerView.Adapter<ClientPrototype>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientPrototype {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.prototyoe_client, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.prototype_client, parent, false)
         return ClientPrototype(view)
     }
 
@@ -31,7 +31,21 @@ class ClientAdapter(var clients: List<Client>, val itemClickListener: OnItemClic
 
         holder.btView.setOnClickListener{
             val client = clients[position]
-            itemClickListener.OnItemClicked(client)
+            val clientFragment = ClientFragment()
+            val bundle = Bundle().apply {
+                putSerializable("client", client)
+            }
+            clientFragment.arguments = bundle
+
+            val fragmentManager = (holder.itemView.context as AppCompatActivity).supportFragmentManager
+            fragmentManager.beginTransaction()
+                .replace(R.id.container, clientFragment)
+                .addToBackStack(null)
+                .commit()
+
+
+
+            //itemClickListener.OnItemClicked(client)
         }
 
 

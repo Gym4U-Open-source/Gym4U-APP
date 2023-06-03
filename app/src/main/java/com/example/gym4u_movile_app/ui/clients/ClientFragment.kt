@@ -7,7 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import com.example.gym4u_movile_app.MainActivity
 import com.example.gym4u_movile_app.R
 import com.example.gym4u_movile_app.databinding.FragmentClientBinding
 import com.example.gym4u_movile_app.databinding.FragmentClientsBinding
@@ -23,6 +28,7 @@ class ClientFragment : Fragment() {
 
     lateinit var rootView: View
     lateinit var tvClientName: TextView
+    lateinit var ibReturn: ImageButton
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +42,33 @@ class ClientFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //val navController = Navigation.findNavController(requireView())
+
+        ibReturn = view.findViewById<ImageButton>(R.id.ibReturn)
         tvClientName = view.findViewById<TextView>(R.id.tvClientName)
         initClient(view.context)
+
+        ibReturn.setOnClickListener {
+
+            /*
+            val nextFragment = ClientsFragment()
+            val transaction = requireFragmentManager().beginTransaction()
+            transaction.replace(R.id.container, nextFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+
+            */
+
+
+            val intent = Intent(context, MainActivity::class.java)
+            startActivity(intent)
+
+
+            //NavHostFragment.findNavController(this).navigateUp()
+            //findNavController(view).navigateUp()
+            //navController.navigateUp()
+            //navController.navigate(R.id.action_clientFragment_to_navigation_clients)
+        }
 
     }
 
