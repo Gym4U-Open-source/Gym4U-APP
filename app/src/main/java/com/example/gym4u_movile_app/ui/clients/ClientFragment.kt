@@ -30,7 +30,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ClientFragment : Fragment() {
+class ClientFragment : Fragment(), ClientWorkoutAdapter.OnDeleteClickListener {
 
     lateinit var rootView: View
     lateinit var tvClientName: TextView
@@ -84,6 +84,33 @@ class ClientFragment : Fragment() {
 
     }
 
+    override fun onDeleteClick(clientWorkoutId: Long){
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://gym4u-api-388317.rj.r.appspot.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val clientWorkoutService: ClientWorkoutService
+        clientWorkoutService = retrofit.create(ClientWorkoutService::class.java)
+
+        clientWorkoutService.deleteClientWorkout(clientWorkoutId).enqueue(object : Callback<BaseResponse<ClientWorkout>> {
+            override fun onResponse(call: Call<BaseResponse<ClientWorkout>>, response: Response<BaseResponse<ClientWorkout>>) {
+                if (response.isSuccessful) {
+                    // Solicitud exitosa, el recurso se eliminó correctamente
+                    val baseResponse = response.body()
+                    // Realiza cualquier acción necesaria con la respuesta
+                } else {
+                    // Error en la solicitud
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<ClientWorkout>>, t: Throwable) {
+                // Error de red u otro error
+            }
+        })
+    }
+
     private fun loadWorkouts(context: Context?) {
 
         val clientIdLong: Long = clientId?.toLong() ?:0L
@@ -111,6 +138,8 @@ class ClientFragment : Fragment() {
             }
 
         })
+
+
 
     }
 

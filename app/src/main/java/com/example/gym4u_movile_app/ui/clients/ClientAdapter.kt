@@ -67,8 +67,8 @@ class ClientAdapter(var clients: List<Client>, val itemClickListener: OnItemClic
 }
 
 class ClientPrototype(itemView: View): RecyclerView.ViewHolder(itemView) {
-    val tvName = itemView.findViewById<TextView>(R.id.tvName)
-    val btView = itemView.findViewById<ImageButton>(R.id.btView)
+    val tvName = itemView.findViewById<TextView>(R.id.tvWorkoutName)
+    val btView = itemView.findViewById<ImageButton>(R.id.ibView)
     fun bind(client: Client){
         tvName.text = client.name + " " + client.lastName
     }
