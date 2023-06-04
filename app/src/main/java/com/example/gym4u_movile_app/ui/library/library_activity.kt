@@ -30,17 +30,12 @@ class library_activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_library)
 
-
-
-
-
         val btnpopup= findViewById<Button>(R.id.btAddexcercise)
         btnpopup.setOnClickListener {
             val dialogView = LayoutInflater.from(this).inflate(R.layout.popup_add_library, null)
 
             val alertDialogBuilder = AlertDialog.Builder(this)
                 .setView(dialogView)
-
 
             val alertDialog = alertDialogBuilder.create()
 
@@ -49,8 +44,6 @@ class library_activity : AppCompatActivity() {
             val EDTcategory= dialogView.findViewById<EditText>(R.id.addcategory)
             val EDvideo= dialogView.findViewById<EditText>(R.id.addvideo)
             val btnAddLibrary = dialogView.findViewById<Button>(R.id.btnAddLibrary)
-
-
 
             btnAddLibrary.setOnClickListener {
                 val name= EDTname.text.toString()
@@ -64,8 +57,6 @@ class library_activity : AppCompatActivity() {
 
             alertDialog.show()
         }
-
-
 
         loadlibrary()
         initview()
@@ -82,10 +73,7 @@ class library_activity : AppCompatActivity() {
         //Configurar el adaptador
         rvLibrary.adapter = libraryadapter
 
-
-
     }
-
 
     private fun loadlibrary() {
 

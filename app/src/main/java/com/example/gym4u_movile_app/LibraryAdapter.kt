@@ -35,15 +35,14 @@ class LibraryPrototype(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val tvaproach= itemView.findViewById<TextView>(R.id.tvaprroach)
     val Ivexercise= itemView.findViewById<ImageView>(R.id.ivFirstImage)
 
-    public fun bind(library: Library) {
+    fun bind(library: Library) {
 
         tvname.text =library.name
 
         tvcategory.text = library.category
         tvaproach.text = library.tag.name
         Glide.with(itemView)
-            .load(library.asseturl)
-            .placeholder(R.drawable.ic_search)
+            .load(library.assetUrl)
             .into(Ivexercise)
     }
 }
