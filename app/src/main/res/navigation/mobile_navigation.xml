@@ -26,8 +26,7 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
 
             app:popUpTo="@id/navigation_inbox"
-            app:restoreState="true"
-            app:popUpToSaveState="true"/>
+            app:popUpToInclusive="true"/>
         <!-- to restore it -->
 
     </fragment>
@@ -40,7 +39,7 @@
 
     <fragment
         android:id="@+id/navigation_library"
-        android:name="com.example.gym4u_movile_app.LibraryFragment"
+        android:name="com.example.gym4u_movile_app.ui.library.LibraryFragment"
         android:label="@string/title_library"
         tools:layout="@layout/fragment_library" />
 
@@ -56,8 +55,15 @@
         android:label="@string/title_inbox"
         tools:layout="@layout/fragment_conversation">
         <argument
-            android:name="coachFollower"
-            app:argType="com.example.gym4u_movile_app.entities.Follower" />
+            android:name="sender"
+            app:argType="com.example.gym4u_movile_app.entities.FollowerUser" />
+        <argument
+            android:name="receiver"
+            app:argType="com.example.gym4u_movile_app.entities.FollowerUser" />
+        <argument
+            android:name="senderIsCoach"
+            app:argType="boolean"
+            android:defaultValue="true" />
     </fragment>
 
 

@@ -8,6 +8,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface FollowerService {
-    @GET("${ApiPaths.USERS}{couchId}/followers")
-    fun getFollowers(@Path("couchId") couchId: Long): Call<BaseResponse<Follower>>
+    @GET("${ApiPaths.USERS}{coachId}/followers")
+    fun getFollowers(@Path("coachId") coachId: Long): Call<BaseResponse<Follower>>
 }

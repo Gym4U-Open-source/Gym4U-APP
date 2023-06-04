@@ -17,7 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_chat" />
+        app:srcCompat="@drawable/ic_chat"
+        android:contentDescription="@string/user_chat_avatar" />
 
     <TextView
         android:id="@+id/tvConversationChatAvatar"
@@ -38,4 +39,41 @@
         app:layout_constraintStart_toEndOf="@+id/ivConversationChatAvatar"
         app:layout_constraintTop_toTopOf="@+id/ivConversationChatAvatar"
         tools:text="User Name" />
+
+    <EditText
+        android:id="@+id/etUserMessage"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:autofillHints="@string/type_your_message_here"
+        android:ems="10"
+        android:hint="@string/type_your_message_here"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ibSendMessage"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ibSendMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:src="@drawable/baseline_send_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/etUserMessage"
+        android:contentDescription="@string/press_to_send_message" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMessages"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/list_of_messages"
+        app:layout_constraintBottom_toTopOf="@+id/etUserMessage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivConversationChatAvatar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

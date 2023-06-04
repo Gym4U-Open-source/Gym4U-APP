@@ -7,9 +7,25 @@
     <string name="title_community">Community</string>
     <string name="library">Library</string>
     <string name="community">Community</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">This is Library Fragment</string>
     <string name="this_is_community_fragment">This is Community Fragment</string>
     <string name="this_is_library_fragment">This is Library Fragment</string>
     <string name="et_filter_value">Look for your interest posts</string>
-    <string name="et_filter_chat">Search message or client</string>
+    <string name="library_exercises">Library Exercises</string>
+    <string name="search">search</string>
+    <string name="search_exercise">Search exercise</string>
+    <string name="add_new_exercise">+ Add new exercise</string>
+    <string name="total_40">TOTAL 40</string>
+    <string name="filter">Filter</string>
+    <string name="excercises">excercises</string>
+    <string name="yoga">Yoga</string>
+    <string name="fuerza">Fuerza</string>
+    <string name="levantimiento_de_pesas">Levantimiento de pesas</string>
+    <string name="et_filter_chat">Search client</string>
+    <string name="type_your_message_here">Type your message here</string>
+    <string name="press_to_send_message">Press to send message</string>
+    <string name="list_of_messages">List of messages</string>
+    <string name="user_chat_avatar">User chat avatar</string>
+    <string name="write_some_before_send">Write some before send it</string>
 </resources>
