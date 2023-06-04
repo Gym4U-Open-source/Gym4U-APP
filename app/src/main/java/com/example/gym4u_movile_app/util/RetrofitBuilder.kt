@@ -7,7 +7,7 @@ class RetrofitBuilder {
     companion object {
         fun build(): Retrofit {
             return Retrofit.Builder()
-                .baseUrl("https://gym4u-api-384017.rj.r.appspot.com/")
+                .baseUrl(ApiPaths.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
