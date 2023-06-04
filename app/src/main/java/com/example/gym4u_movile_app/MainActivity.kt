@@ -32,4 +32,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+
+    fun enableBottomNavigation() {
+        binding.navView.isEnabled = true
+    }
 }
