@@ -88,6 +88,56 @@ class PostsFragment : Fragment() {
                 Log.d("postAtivity", t.toString())
             }
         })
+
+        /*if (!response.isSuccessful && response.body() != null) {
+                    // Accede a los objetos dentro de la respuesta aquí
+                    posts = response.body()!!.content
+                    postsAdapter.notifyDataSetChanged()
+                    Log.d("posts: ", response.body()!!.content.toString())
+
+                } else {
+                    // La respuesta no fue exitosa o es nula
+                    val user1 = User(
+                        1L,
+                        "johndoe one",
+                        "johndoe@example.com",
+                        "password123"
+                    )
+
+                    val user2 = User(
+                        2L,
+                        "janedoe two",
+                        "janedoe@example.com",
+                        "password123"
+                    )
+
+                    val post1 = Post(
+                        1L,
+                        "First Post",
+                        "This is the first post",
+                        "https://example.com/post1.jpg",
+                        arrayListOf(),
+                        user1
+                    )
+
+                    val post2 = Post(
+                        2L,
+                        "Second Post",
+                        "This is the second post",
+                        "https://example.com/post2.jpg",
+                        arrayListOf(
+                            Comment(
+                                1L,
+                                "Great post!",
+                                user2
+                            )
+                        ),
+                        user2
+                    )
+
+                    posts.add(post1)
+                    posts.add(post2)
+                }*/
     }
 
     override fun onDestroyView() {
