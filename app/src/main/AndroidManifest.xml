@@ -15,9 +15,20 @@
         android:theme="@style/Theme.Gym4UMovileAPP"
         tools:targetApi="31">
         <activity
-            android:name=".List_Workout"
+            android:name=".ui.library.add_library"
             android:exported="false" />
-        <!-- <meta-data -->
+        <activity
+            android:name=".ui.library.library_activity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.library.addexercise_activity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.library.activity_Library"
+            android:exported="false" />
+        <activity
+            android:name=".List_Workout"
+            android:exported="false" /> <!-- <meta-data -->
         <!-- android:name="com.google.android.actions" -->
         <!-- android:resource="@xml/prototype_workout" /> -->
         <activity

@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import com.example.gym4u_movile_app.ui.library.library_activity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,8 +45,8 @@ class LibraryFragment : Fragment() {
 
         val tvPrueba = view.findViewById<TextView>(R.id.tvExercise)
         tvPrueba.setOnClickListener{
-            //val intenttt = Intent(activity, add_exercise::class.java)
-            //startActivity(intenttt)
+            val intenttt = Intent(activity, library_activity::class.java)
+            startActivity(intenttt)
         }
 
         val tvPrueba1 = view.findViewById<TextView>(R.id.tvWorkouts)

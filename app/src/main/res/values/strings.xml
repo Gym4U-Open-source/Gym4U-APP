@@ -17,4 +17,19 @@
     <string name="sets">Sets</string>
     <string name="write_exercise">Write exercise</string>
     <string name="addExercise">Add exercise</string>
+    <string name="yoga">yoga</string>
+    <string name="levantimiento_de_pesas">levantimiento_de_pesas</string>
+    <string name="categoria">categoria</string>
+    <string name="library_exercises">library_exercises</string>
+    <string name="filter">filter</string>
+    <string name="total_40">total_40</string>
+    <string name="excercises">excercises</string>
+    <string name="add_new_exercise">add_new_exercise</string>
+    <string name="add_exercises">add_exercise</string>
+    <string name="add_exercisess">add_exercise</string>
+    <string name="name">name</string>
+    <string name="primary_focus">primary_focus</string>
+    <string name="category">category</string>
+    <string name="video">video</string>
+    <string name="search_exercise">search_exercise</string>
 </resources>
