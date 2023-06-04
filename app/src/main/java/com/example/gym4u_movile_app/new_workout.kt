@@ -4,15 +4,14 @@ package com.example.gym4u_movile_app
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.widget.Button
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.entities.BaseResponse
 import com.example.gym4u_movile_app.entities.Exercise
 import com.example.gym4u_movile_app.services.ExerciseService
+import com.example.gym4u_movile_app.ui.library.LibraryFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

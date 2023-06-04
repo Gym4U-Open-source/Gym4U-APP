@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.entities.WORKOUTT
-import com.example.gym4u_movile_app.entities.workout
+import com.example.gym4u_movile_app.entities.Workout
 
-class workoutAdapter(private val workout: ArrayList<workout>):
+class workoutAdapter(private val workout: ArrayList<Workout>):
     RecyclerView.Adapter<WorkoutPrototype>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkoutPrototype {
         val view = LayoutInflater
@@ -36,7 +36,7 @@ class WorkoutPrototype(itemView: View): RecyclerView.ViewHolder(itemView){
     val tvExercise3 = itemView.findViewById<TextView>(R.id.tvExercise3)
 
 
-    fun bind(workout: workout){
+    fun bind(workout: Workout){
         tvTituloWorkout.text= workout.titulo
         tvExercise1.text= workout.exercise1
         tvExercise2.text= workout.exercise2
