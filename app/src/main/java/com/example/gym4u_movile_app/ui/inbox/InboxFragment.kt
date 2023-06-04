@@ -14,10 +14,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gym4u_movile_app.databinding.FragmentInboxBinding
 import com.example.gym4u_movile_app.entities.BaseResponse
 import com.example.gym4u_movile_app.entities.Follower
-import com.example.gym4u_movile_app.entities.FollowerUser
+import com.example.gym4u_movile_app.enums.Roles
 import com.example.gym4u_movile_app.services.FollowerService
+import com.example.gym4u_movile_app.util.AppPreferences
 import com.example.gym4u_movile_app.util.RetrofitBuilder
 import com.example.gym4u_movile_app.util.UtilFn.Companion.textContainAnyCase
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,8 +28,11 @@ class InboxFragment : Fragment() {
 
 
     private lateinit var binding: FragmentInboxBinding
+    private lateinit var preferences: AppPreferences
     private val followers = ArrayList<Follower>()
     private val filteredFollowers = ArrayList<Follower>()
+    private val followerService = RetrofitBuilder.build().create(FollowerService::class.java)
+    private var isCoach: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,14 +40,19 @@ class InboxFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentInboxBinding.inflate(inflater, container, false)
-        loadViews()
-        loadFollowers()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        preferences = AppPreferences(requireContext())
+        loadFollowers()
+        loadViews()
     }
 
     private fun loadViews() {
         binding.rvChats.layoutManager = LinearLayoutManager(context)
-        binding.rvChats.adapter = FollowersAdapter(filteredFollowers)
+        binding.rvChats.adapter = FollowersAdapter(filteredFollowers, isCoach)
 
         binding.etChatFilter.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -57,6 +67,11 @@ class InboxFragment : Fragment() {
         })
     }
 
+    private fun addFollowers(followers: List<Follower>) {
+        filteredFollowers.addAll(followers)
+        this.followers.addAll(followers)
+        binding.rvChats.adapter?.notifyItemRangeInserted(0, followers.size)
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     private fun search(keyword: String?) {
@@ -69,29 +84,46 @@ class InboxFragment : Fragment() {
     }
 
     private fun loadFollowers() {
-        RetrofitBuilder.build()
-            .create(FollowerService::class.java)
-            .getFollowers(2)
-            .enqueue(object : Callback<BaseResponse<Follower>> {
-                override fun onResponse(
-                    call: Call<BaseResponse<Follower>>,
-                    response: Response<BaseResponse<Follower>>
-                ) {
-                    if(response.isSuccessful) {
-                        response.body()?.content?.let {
-                            filteredFollowers.addAll(it)
-                            followers.addAll(it)
-                            binding.rvChats.adapter?.notifyItemRangeInserted(0, followers.size)
-                        }
+        val user = preferences.getUser()
+        user.roles.forEach {
+            if(it == Roles.COACH.name)
+                isCoach = true
+        }
+
+        if(isCoach)
+            followerService
+                .getFollowers(user.id.toLong())
+                .enqueue(object : Callback<BaseResponse<Follower>> {
+                    override fun onResponse(
+                        call: Call<BaseResponse<Follower>>,
+                        response: Response<BaseResponse<Follower>>
+                    ) {
+                        if(response.isSuccessful)
+                            response.body()?.content?.let { addFollowers(it) }
+
                     }
 
-                }
+                    override fun onFailure(call: Call<BaseResponse<Follower>>, t: Throwable) {
+                        Log.d("inboxFragment", t.toString())
+                    }
 
-                override fun onFailure(call: Call<BaseResponse<Follower>>, t: Throwable) {
-                    Log.d("inboxFragment", t.toString())
-                }
+                })
+        else
+            followerService
+                .getFollowersSwitch(0, user.id.toLong())
+                .enqueue(object : Callback<Follower> {
+                    override fun onResponse(call: Call<Follower>, response: Response<Follower>) {
+                        if(response.isSuccessful)
+                            addFollowers(listOf(response.body()!!))
+                        else if(response.code() == 302)
+                            addFollowers(listOf(Gson().fromJson(response.errorBody()?.string(), Follower::class.java)))
+                    }
 
-            })
+                    override fun onFailure(call: Call<Follower>, t: Throwable) {
+                        Log.d("inboxFragment", t.toString())
+                    }
+
+                })
     }
 
 }
