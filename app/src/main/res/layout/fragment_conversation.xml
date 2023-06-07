@@ -45,24 +45,25 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
         android:autofillHints="@string/type_your_message_here"
         android:ems="10"
         android:hint="@string/type_your_message_here"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ibSendMessage"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.90" />
 
     <ImageButton
         android:id="@+id/ibSendMessage"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:contentDescription="@string/press_to_send_message"
         android:src="@drawable/baseline_send_24"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/etUserMessage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/etUserMessage"
-        android:contentDescription="@string/press_to_send_message" />
+        app:layout_constraintTop_toTopOf="@+id/etUserMessage" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMessages"
