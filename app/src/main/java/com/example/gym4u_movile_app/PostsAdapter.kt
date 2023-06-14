@@ -3,6 +3,7 @@ package com.example.gym4u_movile_app
 import CommentsAdapter
 import android.app.AlertDialog
 import android.content.Context
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -90,7 +91,7 @@ class PostPrototype(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         // Hacer clic en la imagen del post para expandir/colapsar comentarios
         ivImage.setOnClickListener {
-            toggleComments(post.comments)
+            showCommentsModal(post.comments)
         }
 
         // Agregar comentario
@@ -108,4 +109,29 @@ class PostPrototype(itemView: View) : RecyclerView.ViewHolder(itemView) {
             }*/
         //}
     }
+    private fun showCommentsModal(comments: List<Comment>) {
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.comments_modal, null)
+        val rvComments = dialogView.findViewById<RecyclerView>(R.id.rvComments)
+
+        rvComments.layoutManager = LinearLayoutManager(context)
+        rvComments.adapter = CommentsAdapter().apply { setComments(comments) }
+
+        val dialogBuilder = AlertDialog.Builder(context, R.style.NoMarginDialog)
+            .setView(dialogView)
+            .setPositiveButton("Cerrar", null)
+
+        val dialog = dialogBuilder.create()
+
+        // Configurar la gravedad del Window para colocarlo en la parte inferior
+        val window = dialog.window
+        val layoutParams = window?.attributes
+        layoutParams?.gravity = Gravity.BOTTOM
+        window?.attributes = layoutParams
+
+        // Establecer el fondo superior con bordes redondeados utilizando el drawable personalizado
+        window?.setBackgroundDrawableResource(R.drawable.dialog_rounded)
+
+        dialog.show()
+    }
+
 }
