@@ -46,31 +46,7 @@ class PostPrototype(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val ivImage = itemView.findViewById<ImageView>(R.id.ivImage)
     private val tvDescription = itemView.findViewById<TextView>(R.id.tvDescription)
     private val tvNumComments = itemView.findViewById<TextView>(R.id.tvNumComments)
-    private val llComments = itemView.findViewById<LinearLayout>(R.id.llComments)
-    private val tilComment = itemView.findViewById<TextInputLayout>(R.id.tilComment)
-    //private val etComment = itemView.findViewById<TextInputEditText>(R.id.etComment)
-    //private val btnAddComment = itemView.findViewById<Button>(R.id.btnAddComment)
 
-    private val commentsAdapter = CommentsAdapter()
-    private val commentsList: MutableList<Comment> = mutableListOf()
-
-    init {
-        val rvComments = itemView.findViewById<RecyclerView>(R.id.rvComments)
-        rvComments.layoutManager = LinearLayoutManager(itemView.context)
-        rvComments.adapter = commentsAdapter
-    }
-
-    private fun toggleComments(comments: List<Comment>) {
-        if (llComments.visibility == View.VISIBLE) {
-            llComments.visibility = View.GONE
-            commentsList.clear()
-            commentsAdapter.setComments(commentsList)
-        } else {
-            llComments.visibility = View.VISIBLE
-            commentsList.addAll(comments)
-            commentsAdapter.setComments(commentsList)
-        }
-    }
     fun bind(post: Post) {
         tvUsername.text = post.user.username
         tvEmail.text = post.user.email
@@ -81,34 +57,12 @@ class PostPrototype(itemView: View) : RecyclerView.ViewHolder(itemView) {
         tvDescription.text = post.description
         tvNumComments.text = "${post.comments.size} comentarios"
 
-        // Mostrar u ocultar comentarios
-        if (post.comments.isNotEmpty()) {
-            llComments.visibility = View.VISIBLE
-            commentsAdapter.setComments(post.comments)
-        } else {
-            llComments.visibility = View.GONE
-        }
-
         // Hacer clic en la imagen del post para expandir/colapsar comentarios
         ivImage.setOnClickListener {
             showCommentsModal(post.comments)
         }
-
-        // Agregar comentario
-        //btnAddComment.setOnClickListener {
-            /*val commentText = etComment.text.toString()
-            if (commentText.isNotEmpty()) {
-                val comment = Comment(
-                    id = generateCommentId(),
-                    review = commentText,
-                    user = getCurrentUser(),
-                    post = post
-                )
-                commentsAdapter.addComment(comment)
-                etComment.text?.clear()
-            }*/
-        //}
     }
+
     private fun showCommentsModal(comments: List<Comment>) {
         val dialogView = LayoutInflater.from(context).inflate(R.layout.comments_modal, null)
         val rvComments = dialogView.findViewById<RecyclerView>(R.id.rvComments)
@@ -118,7 +72,6 @@ class PostPrototype(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val dialogBuilder = AlertDialog.Builder(context, R.style.NoMarginDialog)
             .setView(dialogView)
-            .setPositiveButton("Cerrar", null)
 
         val dialog = dialogBuilder.create()
 

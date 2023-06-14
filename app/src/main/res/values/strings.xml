@@ -42,4 +42,5 @@
     <string name="write_some_before_send">Write some before send it</string>
     <string name="fill_all_fields">Fill all fields</string>
     <string name="incorrect_credentials">Ups, the username or password is incorrect</string>
+    <string name="add_comment">Add comment...</string>
 </resources>
