@@ -56,8 +56,8 @@ class ClientFragment : Fragment(), ClientWorkoutAdapter.OnDeleteClickListener {
 
         ibReturn = view.findViewById<ImageButton>(R.id.ibReturn)
         tvClientName = view.findViewById<TextView>(R.id.tvClientName)
-        initClient(view.context)
 
+        initClient(view.context)
         loadWorkouts(view.context)
 
         ibReturn.setOnClickListener {
@@ -71,10 +71,16 @@ class ClientFragment : Fragment(), ClientWorkoutAdapter.OnDeleteClickListener {
 
             */
 
+            val action = ClientFragmentDirections.actionClientFragmentToNavigationClients2()
+            val navController = Navigation.findNavController(ibReturn)
+            navController.navigate(action)
 
+            /*
             val intent = Intent(context, MainActivity::class.java)
             startActivity(intent)
 
+
+             */
 
             //NavHostFragment.findNavController(this).navigateUp()
             //findNavController(view).navigateUp()
