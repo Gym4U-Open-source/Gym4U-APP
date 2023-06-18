@@ -80,6 +80,9 @@
         <action
             android:id="@+id/action_clientFragment_to_assignWorkout"
             app:destination="@id/assignWorkout" />
+        <action
+            android:id="@+id/action_clientFragment_to_routineFragment"
+            app:destination="@id/routineFragment" />
     </fragment>
     <fragment
         android:id="@+id/assignWorkout"
@@ -90,6 +93,11 @@
             android:id="@+id/action_assignWorkout_to_clientFragment"
             app:destination="@id/clientFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/routineFragment"
+        android:name="com.example.gym4u_movile_app.ui.clients.RoutineFragment"
+        android:label="fragment_routine"
+        tools:layout="@layout/fragment_routine" />
 
 
 </navigation>
