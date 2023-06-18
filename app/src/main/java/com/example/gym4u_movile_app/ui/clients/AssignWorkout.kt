@@ -97,6 +97,8 @@ class AssignWorkout : Fragment() {
                                     }
 
                                 })
+
+
                             }
 
                         }

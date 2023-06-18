@@ -31,11 +31,10 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ClientFragment : Fragment(), ClientWorkoutAdapter.OnDeleteClickListener {
+class ClientFragment : Fragment() {
 
     lateinit var rootView: View
     lateinit var tvClientName: TextView
-    lateinit var ibReturn: ImageButton
     lateinit var btAssign: Button
     lateinit var rvClientWorkout: RecyclerView
     private var clientId: Long? = null
@@ -53,7 +52,6 @@ class ClientFragment : Fragment(), ClientWorkoutAdapter.OnDeleteClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         rvClientWorkout = view.findViewById<RecyclerView>(R.id.rvClientWorkout)
-        ibReturn = view.findViewById<ImageButton>(R.id.ibReturn)
         btAssign = view.findViewById<Button>(R.id.btAssign)
         tvClientName = view.findViewById<TextView>(R.id.tvClientName)
 
@@ -82,39 +80,6 @@ class ClientFragment : Fragment(), ClientWorkoutAdapter.OnDeleteClickListener {
             navController.navigate(R.id.action_clientFragment_to_assignWorkout,args)
         }
 
-        ibReturn.setOnClickListener {
-            val action = ClientFragmentDirections.actionClientFragmentToNavigationClients2()
-            val navController = Navigation.findNavController(ibReturn)
-            navController.navigate(action)
-        }
-
-    }
-
-    override fun onDeleteClick(clientWorkoutId: Long){
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.18.26:8080/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val clientWorkoutService: ClientWorkoutService
-        clientWorkoutService = retrofit.create(ClientWorkoutService::class.java)
-
-        clientWorkoutService.deleteClientWorkout(clientWorkoutId).enqueue(object : Callback<BaseResponse<ClientWorkout>> {
-            override fun onResponse(call: Call<BaseResponse<ClientWorkout>>, response: Response<BaseResponse<ClientWorkout>>) {
-                if (response.isSuccessful) {
-                    // Solicitud exitosa, el recurso se eliminó correctamente
-                    val baseResponse = response.body()
-                    // Realiza cualquier acción necesaria con la respuesta
-                } else {
-                    // Error en la solicitud
-                }
-            }
-
-            override fun onFailure(call: Call<BaseResponse<ClientWorkout>>, t: Throwable) {
-                // Error de red u otro error
-            }
-        })
     }
 
     private fun loadWorkouts(context: Context?) {
