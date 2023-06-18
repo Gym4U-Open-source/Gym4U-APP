@@ -87,7 +87,7 @@ class ClientFragment : Fragment(), ClientWorkoutAdapter.OnDeleteClickListener {
     override fun onDeleteClick(clientWorkoutId: Long){
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://gym4u-api-388317.rj.r.appspot.com/")
+            .baseUrl("http://192.168.18.26:8080/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -116,7 +116,7 @@ class ClientFragment : Fragment(), ClientWorkoutAdapter.OnDeleteClickListener {
         val clientIdLong: Long = clientId?.toLong() ?:0L
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://gym4u-api-388317.rj.r.appspot.com/")
+            .baseUrl("http://192.168.18.26:8080/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
