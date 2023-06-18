@@ -71,35 +71,32 @@ class ClientsFragment : Fragment(), ClientAdapter.OnItemClickListener {
     }
 
     override fun OnItemClicked(client: Client) {
-        /*
-        val intent = Intent(context, ClientFragment::class.java)
-        intent.putExtra("Client", client)
-        startActivity(intent)
-         */
 
 
-        val newFragment = ClientFragment.newInstance(client)
-        val fragmentManager = requireActivity().supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragment_container, newFragment)
-        //fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
-
-
-        /*
         val clientFragment = ClientFragment()
         val bundle = Bundle().apply {
             putSerializable("client", client)
         }
         clientFragment.arguments = bundle
 
-        val fragmentManager = (holder.itemView.context as AppCompatActivity).supportFragmentManager
+        /*
+        val fragmentManager = requireActivity().supportFragmentManager
         fragmentManager.beginTransaction()
             .replace(R.id.container, clientFragment)
             .addToBackStack(null)
             .commit()
 
          */
+
+        /*
+        val newFragment = ClientFragment.newInstance(client)
+        val fragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment_container, newFragment)
+        fragmentTransaction.commit()
+
+         */
+
 
     }
 

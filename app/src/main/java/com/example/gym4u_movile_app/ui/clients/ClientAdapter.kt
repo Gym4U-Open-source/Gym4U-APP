@@ -7,28 +7,42 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.R
 import com.example.gym4u_movile_app.entities.Client
 
 class ClientAdapter(var clients: List<Client>, val itemClickListener: OnItemClickListener): RecyclerView.Adapter<ClientPrototype>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientPrototype {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.prototype_client, parent, false)
-        return ClientPrototype(view)
-    }
 
     interface OnItemClickListener{
         fun OnItemClicked(client: Client)
     }
 
-    override fun getItemCount(): Int {
-        return clients.size
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClientPrototype {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.prototype_client, parent, false)
+        return ClientPrototype(view)
     }
 
+    override fun getItemCount(): Int { return clients.size }
+
     override fun onBindViewHolder(holder: ClientPrototype, position: Int) {
-        holder.bind(clients.get(position))
+        val client = clients[position]
 
+        holder.bind(client)
+        holder.btView.setOnClickListener {
+            //itemClickListener.OnItemClicked(client)
 
+            val clientFragment = ClientFragment()
+            val args = Bundle()
+            args.putSerializable("client", client)
+            clientFragment.arguments = args
+
+            //val action = ClientsFragmentDirections.actionNavigationClientsToClientFragment()
+            val navController = Navigation.findNavController(holder.btView)
+            navController.navigate(R.id.action_navigation_clients_to_clientFragment, args)
+        }
+
+        /*
         holder.btView.setOnClickListener{
             val client = clients[position]
             val clientFragment = ClientFragment()
@@ -42,26 +56,8 @@ class ClientAdapter(var clients: List<Client>, val itemClickListener: OnItemClic
                 .replace(R.id.container, clientFragment)
                 .addToBackStack(null)
                 .commit()
+        }*/
 
-
-
-            //itemClickListener.OnItemClicked(client)
-        }
-
-
-        /*
-        holder.btView.setOnClickListener{
-            val clientFragment = ClientFragment()
-            val fragmentManager = (holder.itemView.context as AppCompatActivity).supportFragmentManager
-            fragmentManager.beginTransaction()
-                .replace(R.id.btView, clientFragment)
-                .addToBackStack(null)
-                .commit()
-        }
-
-         */
-
-         
     }
 
 }
