@@ -17,6 +17,7 @@ import com.example.gym4u_movile_app.entities.BaseResponse
 import com.example.gym4u_movile_app.entities.Client
 import com.example.gym4u_movile_app.entities.ClientWorkout
 import com.example.gym4u_movile_app.services.ClientWorkoutService
+import com.example.gym4u_movile_app.util.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -78,10 +79,7 @@ class ClientFragment : Fragment() {
 
         val clientIdLong: Long = clientId?.toLong() ?:0L
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.18.26:8080/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        val retrofit = RetrofitBuilder.build()
 
         val clientWorkoutService: ClientWorkoutService
         clientWorkoutService = retrofit.create(ClientWorkoutService::class.java)

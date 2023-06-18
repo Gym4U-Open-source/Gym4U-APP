@@ -14,6 +14,7 @@ import com.example.gym4u_movile_app.R
 import com.example.gym4u_movile_app.entities.Client
 import com.example.gym4u_movile_app.entities.ClientWorkout
 import com.example.gym4u_movile_app.services.ClientWorkoutService
+import com.example.gym4u_movile_app.util.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,10 +40,7 @@ class ClientWorkoutAdapter(var clientsWorkouts: List<ClientWorkout>/*, val onDel
         holder.bind(clientsWorkouts.get(position))
         val clientWorkout = clientsWorkouts[position]
         holder.ibDelete.setOnClickListener {
-            val retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.18.26:8080/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+            val retrofit = RetrofitBuilder.build()
             val clientWorkoutService = retrofit.create(ClientWorkoutService::class.java)
 
             val request = clientWorkoutService.deleteClientWorkout(clientWorkout.id!!)

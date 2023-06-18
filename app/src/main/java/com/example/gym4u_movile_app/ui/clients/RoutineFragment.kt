@@ -17,6 +17,7 @@ import com.example.gym4u_movile_app.entities.Client
 import com.example.gym4u_movile_app.entities.ClientWorkout
 import com.example.gym4u_movile_app.entities.Routines
 import com.example.gym4u_movile_app.services.RoutineService
+import com.example.gym4u_movile_app.util.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,10 +52,7 @@ class RoutineFragment : Fragment() {
     private fun loadRoutines() {
         val workoutIdInt : Int = workoutId?.toInt() ?:0
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.18.26:8080/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        val retrofit = RetrofitBuilder.build()
 
         val routineService : RoutineService
         routineService = retrofit.create(RoutineService::class.java)
