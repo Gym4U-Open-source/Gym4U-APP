@@ -22,6 +22,7 @@ import com.example.gym4u_movile_app.entities.ClientWorkout
 import com.example.gym4u_movile_app.entities.WORKOUTT
 import com.example.gym4u_movile_app.services.ClientWorkoutService
 import com.example.gym4u_movile_app.services.WorkoutService
+import com.example.gym4u_movile_app.util.RetrofitBuilder
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -55,10 +56,7 @@ class AssignWorkout : Fragment() {
 
         val clientObject = arguments?.getSerializable("client") as? Client
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.18.26:8080/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        val retrofit = RetrofitBuilder.build()
 
         val workoutService: WorkoutService
         workoutService = retrofit.create(WorkoutService::class.java)
@@ -77,10 +75,7 @@ class AssignWorkout : Fragment() {
 
                             btAssigned.setOnClickListener {
 
-                                val retrofit2 = Retrofit.Builder()
-                                    .baseUrl("http://192.168.18.26:8080/")
-                                    .addConverterFactory(GsonConverterFactory.create())
-                                    .build()
+                                val retrofit2 = RetrofitBuilder.build()
                                 val clientWorkoutService: ClientWorkoutService
                                 clientWorkoutService = retrofit2.create(ClientWorkoutService::class.java)
                                 val newClientWorkout = ClientWorkout(null,selectedWorkout, clientObject!!)

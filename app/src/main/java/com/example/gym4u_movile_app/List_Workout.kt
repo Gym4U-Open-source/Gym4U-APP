@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.entities.BaseResponse
 import com.example.gym4u_movile_app.entities.WORKOUTT
 import com.example.gym4u_movile_app.services.WorkoutService
+import com.example.gym4u_movile_app.util.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -72,10 +73,7 @@ class List_Workout : AppCompatActivity() {
     }
 
     private fun loadData() {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://gym4u-api-388317.rj.r.appspot.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        val retrofit = RetrofitBuilder.build()
 
         val exerciseService: WorkoutService = retrofit.create(WorkoutService:: class.java)
         val request = exerciseService.getAll()

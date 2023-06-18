@@ -12,6 +12,7 @@ import com.example.gym4u_movile_app.entities.BaseResponse
 import com.example.gym4u_movile_app.entities.Exercise
 import com.example.gym4u_movile_app.services.ExerciseService
 import com.example.gym4u_movile_app.ui.library.LibraryFragment
+import com.example.gym4u_movile_app.util.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -66,10 +67,7 @@ class new_workout : AppCompatActivity() {
 //        workouts.add(Exercise(1,"resistencia","none",2,"Press de banca",2,1))
 //        workouts.add(Exercise(1,"elasticidad","none",2,"Fondos",2,1))
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://gym4u-api-388317.rj.r.appspot.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        val retrofit = RetrofitBuilder.build()
 
         val exerciseService: ExerciseService = retrofit.create(ExerciseService:: class.java)
 

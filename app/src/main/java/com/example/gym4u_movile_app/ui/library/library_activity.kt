@@ -16,6 +16,7 @@ import com.example.gym4u_movile_app.entities.BaseResponse
 import com.example.gym4u_movile_app.entities.Library
 import com.example.gym4u_movile_app.entities.Tags
 import com.example.gym4u_movile_app.services.LibraryService
+import com.example.gym4u_movile_app.util.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -78,10 +79,7 @@ class library_activity : AppCompatActivity() {
     private fun loadlibrary() {
 
 
-       val retrofit = Retrofit.Builder()
-            .baseUrl("https://gym4u-api-388317.rj.r.appspot.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+       val retrofit = RetrofitBuilder.build()
 
         val libraryService: LibraryService = retrofit.create(LibraryService::class.java)
 
