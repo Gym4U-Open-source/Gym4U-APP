@@ -50,42 +50,17 @@ class ClientFragment : Fragment(), ClientWorkoutAdapter.OnDeleteClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //val navController = Navigation.findNavController(requireView())
-
         rvClientWorkout = view.findViewById<RecyclerView>(R.id.rvClientWorkout)
-
         ibReturn = view.findViewById<ImageButton>(R.id.ibReturn)
         tvClientName = view.findViewById<TextView>(R.id.tvClientName)
 
-        initClient(view.context)
+        initClient()
         loadWorkouts(view.context)
 
         ibReturn.setOnClickListener {
-
-            /*
-            val nextFragment = ClientsFragment()
-            val transaction = requireFragmentManager().beginTransaction()
-            transaction.replace(R.id.container, nextFragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
-
-            */
-
             val action = ClientFragmentDirections.actionClientFragmentToNavigationClients2()
             val navController = Navigation.findNavController(ibReturn)
             navController.navigate(action)
-
-            /*
-            val intent = Intent(context, MainActivity::class.java)
-            startActivity(intent)
-
-
-             */
-
-            //NavHostFragment.findNavController(this).navigateUp()
-            //findNavController(view).navigateUp()
-            //navController.navigateUp()
-            //navController.navigate(R.id.action_clientFragment_to_navigation_clients)
         }
 
     }
@@ -149,10 +124,7 @@ class ClientFragment : Fragment(), ClientWorkoutAdapter.OnDeleteClickListener {
 
     }
 
-    private fun initClient(context: Context){
-        val intent = requireActivity().intent
-
-        //val clientObject: Client? = intent.getSerializableExtra("Client") as? Client
+    private fun initClient(){
         val clientObject = arguments?.getSerializable("client") as? Client
 
         if (clientObject != null) {
@@ -162,9 +134,6 @@ class ClientFragment : Fragment(), ClientWorkoutAdapter.OnDeleteClickListener {
         } else {
             tvClientName.text = "No se encontró ningún cliente"
         }
-
-        //tvClientName.text = clientObject?.name + " " + clientObject?.lastName
-
     }
 
     companion object {
