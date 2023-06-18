@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.navigation.Navigation
@@ -35,6 +36,7 @@ class ClientFragment : Fragment(), ClientWorkoutAdapter.OnDeleteClickListener {
     lateinit var rootView: View
     lateinit var tvClientName: TextView
     lateinit var ibReturn: ImageButton
+    lateinit var btAssign: Button
     lateinit var rvClientWorkout: RecyclerView
     private var clientId: Long? = null
 
@@ -52,10 +54,33 @@ class ClientFragment : Fragment(), ClientWorkoutAdapter.OnDeleteClickListener {
 
         rvClientWorkout = view.findViewById<RecyclerView>(R.id.rvClientWorkout)
         ibReturn = view.findViewById<ImageButton>(R.id.ibReturn)
+        btAssign = view.findViewById<Button>(R.id.btAssign)
         tvClientName = view.findViewById<TextView>(R.id.tvClientName)
 
-        initClient()
+
+
+        val clientObject = arguments?.getSerializable("client") as? Client
+
+        if (clientObject != null) {
+            val fullName = "${clientObject.name} ${clientObject.lastName}"
+            tvClientName.text = fullName
+            clientId = clientObject.id
+        } else {
+            tvClientName.text = "No se encontró ningún cliente"
+        }
+
         loadWorkouts(view.context)
+
+        btAssign.setOnClickListener {
+
+            val assignWorkout = AssignWorkout()
+            val args = Bundle()
+            args.putSerializable("client", clientObject)
+            assignWorkout.arguments = args
+
+            val navController = Navigation.findNavController(btAssign)
+            navController.navigate(R.id.action_clientFragment_to_assignWorkout,args)
+        }
 
         ibReturn.setOnClickListener {
             val action = ClientFragmentDirections.actionClientFragmentToNavigationClients2()

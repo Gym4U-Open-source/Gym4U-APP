@@ -37,8 +37,5 @@ class ClientWorkoutPrototype(itemView: View): RecyclerView.ViewHolder(itemView) 
     lateinit var onDeleteClickListener: ClientWorkoutAdapter.OnDeleteClickListener
     fun bind(clientWorkout: ClientWorkout){
         tvWorkout.text = clientWorkout.workout.name
-        ibDelete.setOnClickListener {
-            onDeleteClickListener.onDeleteClick(clientWorkout.id)
-        }
     }
 }
