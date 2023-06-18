@@ -23,6 +23,6 @@ interface ClientWorkoutService {
     fun postUserWorkout(@Body requestBody: ClientWorkout): Call<Void>
 
     @DELETE("api/v1/userRoutines/{clientWorkoutId}")
-    fun deleteClientWorkout(@Path("clientWorkoutId") clientWorkoutId: Long): Call<BaseResponse<ClientWorkout>>
+    fun deleteClientWorkout(@Path("clientWorkoutId") clientWorkoutId: Long): Call<Void>
 
 }

@@ -1,14 +1,22 @@
 package com.example.gym4u_movile_app.ui.clients
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.app.ActivityCompat.recreate
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.R
 import com.example.gym4u_movile_app.entities.Client
 import com.example.gym4u_movile_app.entities.ClientWorkout
+import com.example.gym4u_movile_app.services.ClientWorkoutService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class ClientWorkoutAdapter(var clientsWorkouts: List<ClientWorkout>/*, val onDeleteClickListener: OnDeleteClickListener*/): RecyclerView.Adapter<ClientWorkoutPrototype>(){
 
@@ -27,6 +35,30 @@ class ClientWorkoutAdapter(var clientsWorkouts: List<ClientWorkout>/*, val onDel
 
     override fun onBindViewHolder(holder: ClientWorkoutPrototype, position: Int) {
         holder.bind(clientsWorkouts.get(position))
+        val clientWorkout = clientsWorkouts[position]
+        holder.ibDelete.setOnClickListener {
+            val retrofit = Retrofit.Builder()
+                .baseUrl("http://192.168.18.26:8080/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+            val clientWorkoutService = retrofit.create(ClientWorkoutService::class.java)
+
+            val request = clientWorkoutService.deleteClientWorkout(clientWorkout.id!!)
+
+            request.enqueue(object: Callback<Void>{
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    Log.d("Activity Release", "Eliminated")
+                }
+
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                    Log.d("Activity Fail", "Error: "+t.toString())
+                }
+
+            })
+            this.notifyDataSetChanged()
+        }
+
+
     }
 
 }
@@ -34,7 +66,8 @@ class ClientWorkoutAdapter(var clientsWorkouts: List<ClientWorkout>/*, val onDel
 class ClientWorkoutPrototype(itemView: View): RecyclerView.ViewHolder(itemView) {
     val tvWorkout = itemView.findViewById<TextView>(R.id.tvWorkoutName)
     val ibDelete = itemView.findViewById<ImageButton>(R.id.ibDelete)
-    lateinit var onDeleteClickListener: ClientWorkoutAdapter.OnDeleteClickListener
+
+
     fun bind(clientWorkout: ClientWorkout){
         tvWorkout.text = clientWorkout.workout.name
     }
