@@ -77,7 +77,15 @@
         <action
             android:id="@+id/action_clientFragment_to_navigation_clients2"
             app:destination="@id/navigation_clients" />
+        <action
+            android:id="@+id/action_clientFragment_to_assignWorkout"
+            app:destination="@id/assignWorkout" />
     </fragment>
+    <fragment
+        android:id="@+id/assignWorkout"
+        android:name="com.example.gym4u_movile_app.ui.clients.AssignWorkout"
+        android:label="fragment_assign_workout"
+        tools:layout="@layout/fragment_assign_workout" />
 
 
 </navigation>
