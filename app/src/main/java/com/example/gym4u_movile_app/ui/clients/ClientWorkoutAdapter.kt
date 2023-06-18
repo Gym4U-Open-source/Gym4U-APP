@@ -1,5 +1,6 @@
 package com.example.gym4u_movile_app.ui.clients
 
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.core.app.ActivityCompat.recreate
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.R
 import com.example.gym4u_movile_app.entities.Client
@@ -49,15 +51,21 @@ class ClientWorkoutAdapter(var clientsWorkouts: List<ClientWorkout>/*, val onDel
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     Log.d("Activity Release", "Eliminated")
                 }
-
                 override fun onFailure(call: Call<Void>, t: Throwable) {
                     Log.d("Activity Fail", "Error: "+t.toString())
                 }
-
             })
-            this.notifyDataSetChanged()
         }
 
+        holder.ibView.setOnClickListener {
+            val routineFragment = RoutineFragment()
+            val args = Bundle()
+            args.putSerializable("clientWorkout", clientWorkout)
+            routineFragment.arguments = args
+
+            val navController = Navigation.findNavController(holder.ibView)
+            navController.navigate(R.id.action_clientFragment_to_routineFragment, args)
+        }
 
     }
 
@@ -66,7 +74,7 @@ class ClientWorkoutAdapter(var clientsWorkouts: List<ClientWorkout>/*, val onDel
 class ClientWorkoutPrototype(itemView: View): RecyclerView.ViewHolder(itemView) {
     val tvWorkout = itemView.findViewById<TextView>(R.id.tvWorkoutName)
     val ibDelete = itemView.findViewById<ImageButton>(R.id.ibDelete)
-
+    val ibView = itemView.findViewById<ImageButton>(R.id.ibView)
 
     fun bind(clientWorkout: ClientWorkout){
         tvWorkout.text = clientWorkout.workout.name
