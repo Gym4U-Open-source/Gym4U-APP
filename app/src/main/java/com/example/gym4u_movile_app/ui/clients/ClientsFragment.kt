@@ -23,11 +23,9 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ClientsFragment : Fragment(), ClientAdapter.OnItemClickListener {
+class ClientsFragment : Fragment() {
 
     lateinit var clientRecyclerView: RecyclerView
-    private var currentFragment: Fragment? = null
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,7 +38,6 @@ class ClientsFragment : Fragment(), ClientAdapter.OnItemClickListener {
 
         clientRecyclerView = view.findViewById<RecyclerView>(R.id.rvClients)
         loadClients(view.context)
-
     }
 
     private fun loadClients(context: Context) {
@@ -58,7 +55,7 @@ class ClientsFragment : Fragment(), ClientAdapter.OnItemClickListener {
             override fun onResponse(call: Call<BaseResponse<Client>>, response: Response<BaseResponse<Client>>) {
                 if(response.isSuccessful){
                     val clients: List<Client> = response.body()!!.content
-                    clientRecyclerView.adapter = ClientAdapter(clients, this@ClientsFragment)
+                    clientRecyclerView.adapter = ClientAdapter(clients)
                     clientRecyclerView.layoutManager = LinearLayoutManager(context)
                 }
             }
@@ -69,36 +66,5 @@ class ClientsFragment : Fragment(), ClientAdapter.OnItemClickListener {
 
         })
     }
-
-    override fun OnItemClicked(client: Client) {
-
-
-        val clientFragment = ClientFragment()
-        val bundle = Bundle().apply {
-            putSerializable("client", client)
-        }
-        clientFragment.arguments = bundle
-
-        /*
-        val fragmentManager = requireActivity().supportFragmentManager
-        fragmentManager.beginTransaction()
-            .replace(R.id.container, clientFragment)
-            .addToBackStack(null)
-            .commit()
-
-         */
-
-        /*
-        val newFragment = ClientFragment.newInstance(client)
-        val fragmentManager = requireActivity().supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragment_container, newFragment)
-        fragmentTransaction.commit()
-
-         */
-
-
-    }
-
 
 }
