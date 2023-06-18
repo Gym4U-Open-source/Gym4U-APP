@@ -46,7 +46,7 @@ class ClientsFragment : Fragment(), ClientAdapter.OnItemClickListener {
     private fun loadClients(context: Context) {
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://gym4u-api-388317.rj.r.appspot.com/")
+            .baseUrl("http://192.168.18.26:8080/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
