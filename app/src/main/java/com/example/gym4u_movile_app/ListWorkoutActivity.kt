@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,10 +16,8 @@ import com.example.gym4u_movile_app.util.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
-class List_Workout : AppCompatActivity() {
+class ListWorkoutActivity : AppCompatActivity() {
 
     var workouts = ArrayList<WORKOUTT>();//1
     var adapterWorkout = WORKOUTSAdapter(workouts);//2
@@ -37,7 +34,7 @@ class List_Workout : AppCompatActivity() {
 
         val btn_add_new_workouts = findViewById<Button>(R.id.btn_add_new_workouts2)
         btn_add_new_workouts.setOnClickListener{
-            val intent = Intent(this, new_workout::class.java)
+            val intent = Intent(this, NewWorkoutActivity::class.java)
             startActivity(intent)
         }
 

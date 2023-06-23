@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gym"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.register.RegisterActivity">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvGym4URegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/gym_4u"
+                android:textColor=" #FF9900"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/etRegisterUsername"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/username"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvGym4URegister" />
+
+            <EditText
+                android:id="@+id/etRegisterEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                app:layout_constraintEnd_toEndOf="@+id/etRegisterUsername"
+                app:layout_constraintStart_toStartOf="@+id/etRegisterUsername"
+                app:layout_constraintTop_toBottomOf="@+id/etRegisterUsername" />
+
+            <EditText
+                android:id="@+id/etRegisterPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="@+id/etRegisterEmail"
+                app:layout_constraintStart_toStartOf="@+id/etRegisterEmail"
+                app:layout_constraintTop_toBottomOf="@+id/etRegisterEmail" />
+
+            <EditText
+                android:id="@+id/etRegisterRepeatPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/repeat_password"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="@+id/etRegisterPassword"
+                app:layout_constraintStart_toStartOf="@+id/etRegisterPassword"
+                app:layout_constraintTop_toBottomOf="@+id/etRegisterPassword" />
+
+            <EditText
+                android:id="@+id/etRegisterName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/name"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="@+id/etRegisterRepeatPassword"
+                app:layout_constraintStart_toStartOf="@+id/etRegisterRepeatPassword"
+                app:layout_constraintTop_toBottomOf="@+id/etRegisterRepeatPassword" />
+
+            <EditText
+                android:id="@+id/etRegisterLastname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/lastname"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="@+id/etRegisterName"
+                app:layout_constraintStart_toStartOf="@+id/etRegisterName"
+                app:layout_constraintTop_toBottomOf="@+id/etRegisterName" />
+
+            <Spinner
+                android:id="@+id/spUserTypes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/etRegisterLastname"
+                app:layout_constraintStart_toStartOf="@+id/etRegisterLastname"
+                app:layout_constraintTop_toBottomOf="@+id/etRegisterLastname" />
+
+            <Button
+                android:id="@+id/btSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/sing_up"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spUserTypes" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btSignUp">
+
+                <TextView
+                    android:id="@+id/tvSignInText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="4dp"
+                    android:text="@string/do_you_have_an_account" />
+
+                <TextView
+                    android:id="@+id/tvSignInAction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/login"
+                    android:textAllCaps="false"
+                    android:textColor="#03A9F4" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
