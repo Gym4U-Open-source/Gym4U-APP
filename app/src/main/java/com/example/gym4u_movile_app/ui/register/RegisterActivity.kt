@@ -69,7 +69,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun getUserType() = if(binding.spUserTypes.selectedString() == "User") Roles.NORMAL.name else Roles.COACH.name
 
-    private fun toLogin() = startActivityAndClean(LoginActivity::class.java)
+    private fun toLogin() = startActivityAndClean(LoginActivity::class.java).apply { showShortToast(R.string.register_successfully) }
 
     private fun toRegister(): Register {
         return Register(

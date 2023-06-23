@@ -62,6 +62,7 @@
     <string name="logout">Logout</string>
     <string name="logout_message">are you sure do you want logout?</string>
     <string name="cancel">Cancel</string>
+    <string name="register_successfully">"Registered successfully"</string>
     <string-array name="user_types">
         <item>User</item>
         <item>Coach</item>
