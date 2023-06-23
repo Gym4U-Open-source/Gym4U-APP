@@ -12,10 +12,26 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:editTextStyle">@style/Theme.Gym4UMovileAPP.EditText</item>
+        <item name="editTextStyle">@style/Theme.Gym4UMovileAPP.EditText</item>
+        <item name="spinnerStyle">@style/Theme.Gym4UMovileAPP.Spinner</item>
+
     </style>
 
-    <style name="Theme.Gym4UMovileAPP.Login" parent="Theme.Gym4UMovileAPP">
+    <style name="Theme.Gym4UMovileAPP.NoActionBar" parent="Theme.Gym4UMovileAPP">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="Theme.Gym4UMovileAPP.Spinner" parent="Widget.AppCompat.Spinner">
+        <item name="android:background">@drawable/bg_dropdown_spinner</item>
+    </style>
+
+    <style name="Theme.Gym4UMovileAPP.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@drawable/bg_edit_text</item>
+        <item name="android:padding">8dp</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
 </resources>

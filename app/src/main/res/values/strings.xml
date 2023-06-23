@@ -27,7 +27,7 @@
     <string name="add_new_exercise">add_new_exercise</string>
     <string name="add_exercises">add_exercise</string>
     <string name="add_exercisess">add_exercise</string>
-    <string name="name">name</string>
+    <string name="name">Name</string>
     <string name="primary_focus">primary_focus</string>
     <string name="category">category</string>
     <string name="video">video</string>
@@ -43,4 +43,28 @@
     <string name="fill_all_fields">Fill all fields</string>
     <string name="incorrect_credentials">Ups, the username or password is incorrect</string>
     <string name="add_comment">Add comment...</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="register"><u>Register</u></string>
+    <string name="sing_in">Sing in</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="gym_4u">Gym 4U</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="lastname">Lastname</string>
+    <string name="email">Email</string>
+    <string name="sing_up">Sing up</string>
+    <string name="do_you_have_an_account">Do you have an account?</string>
+    <string name="login"><u>Login</u></string>
+    <string name="passwords_must_be_equals">Passwords must be equals</string>
+    <string name="insert_a_valid_email">Insert a valid email</string>
+    <string name="password_should_be_longer">The password should be longer than $1 characters.</string>
+    <string name="ups_try_again">Oops, something went wrong. Try again later.</string>
+    <string name="logout">Logout</string>
+    <string name="logout_message">are you sure do you want logout?</string>
+    <string name="cancel">Cancel</string>
+    <string-array name="user_types">
+        <item>User</item>
+        <item>Coach</item>
+    </string-array>
+
 </resources>
