@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.example.gym4u_movile_app.List_Workout
+import com.example.gym4u_movile_app.ListWorkoutActivity
 import com.example.gym4u_movile_app.R
 
 
@@ -23,13 +23,13 @@ class LibraryFragment : Fragment() {
 
         val tvPrueba = view.findViewById<TextView>(R.id.tvExercise)
         tvPrueba.setOnClickListener{
-            val intenttt = Intent(activity, library_activity::class.java)
+            val intenttt = Intent(activity, LibraryActivity::class.java)
             startActivity(intenttt)
         }
 
         val tvPrueba1 = view.findViewById<TextView>(R.id.tvWorkouts)
         tvPrueba1.setOnClickListener{
-            val intentt = Intent(activity, List_Workout::class.java)
+            val intentt = Intent(activity, ListWorkoutActivity::class.java)
             startActivity(intentt)
         }
 

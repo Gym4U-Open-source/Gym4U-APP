@@ -1,7 +1,6 @@
 package com.example.gym4u_movile_app.ui.library
 
 import android.app.AlertDialog
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -20,10 +19,8 @@ import com.example.gym4u_movile_app.util.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
-class library_activity : AppCompatActivity() {
+class LibraryActivity : AppCompatActivity() {
 
     var library= ArrayList<Library>()
     var libraryadapter= LibraryAdapter(library)
