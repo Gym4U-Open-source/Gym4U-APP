@@ -74,12 +74,14 @@ class PostsFragment : Fragment() {
                 call: Call<BaseResponse<Post>>,
                 response: Response<BaseResponse<Post>>
             ) {
-                response.body()!!.content.forEach {
-                    posts.add(it)
+                response.body().let {
+                    it?.content?.forEachIndexed { index, post ->
+                        posts.add(post)
+                        postsAdapter.notifyItemInserted(index)
+                    }
                 }
 
-                postsAdapter.notifyDataSetChanged()
-                Log.d("Post: ", posts[0].id.toString())
+
             }
 
             override fun onFailure(call: Call<BaseResponse<Post>>, t: Throwable) {
