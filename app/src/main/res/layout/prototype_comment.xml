@@ -50,15 +50,15 @@
             tools:text="Comentario" />
 
         <TextView
-            android:id="@+id/tvCircleAvatarText"
+            android:id="@+id/tvCircleAvatarTextCommunity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="19dp"
-            android:layout_marginTop="19dp"
             android:text="TV"
             android:textColor="#FFFFFF"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/ivCircleAvatar"
+            app:layout_constraintEnd_toEndOf="@+id/ivCircleAvatar"
+            app:layout_constraintStart_toStartOf="@+id/ivCircleAvatar"
+            app:layout_constraintTop_toTopOf="@+id/ivCircleAvatar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

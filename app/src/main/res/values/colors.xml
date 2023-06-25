@@ -8,5 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="instagram">#0095f6</color>
+    <color name="instagram_variant">#7ACBFF</color>
+
     <color name="filter_background">#F3F3F3</color>
 </resources>

@@ -44,7 +44,7 @@ class CommentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val tvComment: TextView = itemView.findViewById(R.id.tvComment)
     private val tvCommentEmail: TextView = itemView.findViewById(R.id.tvCommentEmail)
     private val ivCircleAvatar: ImageView = itemView.findViewById(R.id.ivCircleAvatar)
-    private val tvCircleAvatarText: TextView = itemView.findViewById(R.id.tvCircleAvatarText)
+    private val tvCircleAvatarText: TextView = itemView.findViewById(R.id.tvCircleAvatarTextCommunity)
 
     fun bind(comment: Comment) {
         tvComment.text = comment.review
