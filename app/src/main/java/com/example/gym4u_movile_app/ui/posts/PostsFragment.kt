@@ -58,7 +58,7 @@ class PostsFragment : Fragment() {
     }
 
     private fun initView() {
-        val rvPosts = binding.rvPosts
+        val rvPosts = binding.rvposts
 
         // Configurar el LayoutManager
         val layoutManager = LinearLayoutManager(context)
@@ -93,7 +93,7 @@ class PostsFragment : Fragment() {
             }!! && !UtilFn.textContainAnyCase(post.description, keyword)
             }
 
-        binding.rvPosts.adapter?.notifyDataSetChanged()
+        binding.rvposts.adapter?.notifyDataSetChanged()
     }
 
     private fun loadPosts() {
@@ -125,7 +125,7 @@ class PostsFragment : Fragment() {
     private fun addPosts(posts: List<Post>) {
         filteredPosts.addAll(posts)
         this.posts.addAll(posts)
-        binding.rvPosts.adapter?.notifyItemRangeInserted(0, posts.size)
+        binding.rvposts.adapter?.notifyItemRangeInserted(0, posts.size)
     }
 
 

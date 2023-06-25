@@ -1,5 +1,5 @@
 <!-- random_background.xml -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#FF0000" /> <!-- Color de fondo aleatorio -->
+    <solid android:color="#000000" /> <!-- Color de fondo aleatorio -->
     <corners android:radius="1000dp" /> <!-- Radio de las esquinas del fondo -->
 </shape>
