@@ -85,10 +85,12 @@ class PostsFragment : Fragment() {
         filteredPosts.clear()
         filteredPosts.addAll(posts)
         if(keyword != null)
-            filteredPosts.removeIf { post -> !UtilFn.textContainAnyCase(
-                post.description,
-                keyword
-            ) && !UtilFn.textContainAnyCase(post.description, keyword)
+            filteredPosts.removeIf { post -> !post.description?.let {
+                UtilFn.textContainAnyCase(
+                    it,
+                    keyword
+                )
+            }!! && !UtilFn.textContainAnyCase(post.description, keyword)
             }
 
         binding.rvPosts.adapter?.notifyDataSetChanged()

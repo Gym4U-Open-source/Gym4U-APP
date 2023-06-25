@@ -6,6 +6,7 @@ class ApiPaths {
         private const val API_VERSION = "api/v1/"
         const val USERS = "${API_VERSION}users/"
         const val CONVERSATIONS = "${API_VERSION}conversations/"
+        const val COMMENTS = "${API_VERSION}posts-comments/"
         const val MESSAGES = "${API_VERSION}messages/"
         const val LOGIN = "${API_VERSION}users/auth/sign-in"
     }
