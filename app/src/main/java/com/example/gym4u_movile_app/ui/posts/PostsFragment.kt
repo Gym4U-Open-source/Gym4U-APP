@@ -34,9 +34,10 @@ class PostsFragment : Fragment() {
 
     private var _binding: FragmentPostsBinding? = null
     private val binding get() = _binding!!
-    private val filteredPosts = ArrayList<Post>()
 
     var posts = ArrayList<Post>()
+    private val filteredPosts = ArrayList<Post>()
+
     val postsAdapter = PostsAdapter(filteredPosts)
 
     override fun onCreateView(
@@ -94,6 +95,8 @@ class PostsFragment : Fragment() {
     }
 
     private fun loadPosts() {
+        posts.clear()
+        filteredPosts.clear()
 
         val retrofit = RetrofitBuilder.build()
 
@@ -109,13 +112,6 @@ class PostsFragment : Fragment() {
                 response.body()!!.content.let {
                     addPosts(it)
                 }
-
-                //response.body()!!.content.forEach {
-                //    posts.add(it)
-                //}
-
-                //postsAdapter.notifyDataSetChanged()
-                //Log.d("Post: ", posts[0].id.toString())
             }
 
             override fun onFailure(call: Call<BaseResponse<Post>>, t: Throwable) {
