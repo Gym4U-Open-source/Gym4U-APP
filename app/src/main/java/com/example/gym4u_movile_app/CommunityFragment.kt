@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gym4u_movile_app.databinding.FragmentCommunityBinding
 import com.example.gym4u_movile_app.databinding.FragmentPostsBinding
@@ -57,6 +58,21 @@ class CommunityFragment : Fragment() {
     }
 
     private fun initView() {
+        val user = preferences.getUser()
+        user.roles.forEach {
+            if(it == Roles.COACH.name)
+                isCoach = true
+        }
+
+        val btNewPostCommunity: Button = binding.btNewPostCommunity
+
+        if (isCoach) {
+            btNewPostCommunity.text = "Publicar"
+            //btNewPostCommunity.setBackgroundResource(R.drawable.button_background_green)
+        } else {
+            btNewPostCommunity.text = "Siguiendo"
+        }
+
         val rvPosts = binding.rvPostsCommunity
 
         // Configurar el LayoutManager
