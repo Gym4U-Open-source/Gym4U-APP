@@ -1,22 +1,26 @@
 package com.example.gym4u_movile_app
 
+import android.app.AlertDialog
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gym4u_movile_app.databinding.FragmentCommunityBinding
-import com.example.gym4u_movile_app.databinding.FragmentPostsBinding
 import com.example.gym4u_movile_app.entities.BaseResponse
 import com.example.gym4u_movile_app.entities.Follower
 import com.example.gym4u_movile_app.entities.Post
-import com.example.gym4u_movile_app.entities.User
+import com.example.gym4u_movile_app.entities.resources.CreateCommentResource
+import com.example.gym4u_movile_app.entities.resources.CreatePostResource
+import com.example.gym4u_movile_app.entities.resources.UserResource
 import com.example.gym4u_movile_app.enums.Roles
+import com.example.gym4u_movile_app.services.CommentService
 import com.example.gym4u_movile_app.services.FollowerService
 import com.example.gym4u_movile_app.services.PostService
 import com.example.gym4u_movile_app.util.AppPreferences
@@ -41,6 +45,8 @@ class CommunityFragment : Fragment() {
 
     private var isCoach: Boolean = false
 
+    private val postService = RetrofitBuilder.build().create(PostService::class.java)
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,7 +56,6 @@ class CommunityFragment : Fragment() {
 
         preferences = AppPreferences(requireContext())
 
-        //loadPosts()
         loadFollowers()
         initView()
 
@@ -68,7 +73,11 @@ class CommunityFragment : Fragment() {
 
         if (isCoach) {
             btNewPostCommunity.text = "Publicar"
-            //btNewPostCommunity.setBackgroundResource(R.drawable.button_background_green)
+
+            btNewPostCommunity.setOnClickListener {
+                showCreatePostModal()
+            }
+
         } else {
             btNewPostCommunity.text = "Siguiendo"
         }
@@ -81,6 +90,82 @@ class CommunityFragment : Fragment() {
 
         // Configurar el adaptador
         rvPosts.adapter = postsAdapter
+    }
+
+    private fun showCreatePostModal() {
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.create_post_modal, null)
+
+        val etComment = dialogView.findViewById<EditText>(R.id.etTitleModalPost)
+        val etDescriptionModalPost = dialogView.findViewById<EditText>(R.id.etDescriptionModalPost)
+        val etImageUrlModalPost = dialogView.findViewById<EditText>(R.id.etImageUrlModalPost)
+
+        val btCreatePost = dialogView.findViewById<Button>(R.id.btCreatePost)
+
+        val dialogBuilder = AlertDialog.Builder(context)
+            .setView(dialogView)
+
+        val dialog = dialogBuilder.create()
+
+        val window = dialog.window
+        val layoutParams = window?.attributes
+        layoutParams?.gravity = Gravity.CENTER
+        window?.attributes = layoutParams
+
+        window?.setBackgroundDrawableResource(R.drawable.post_modal_rounded)
+
+        btCreatePost.setOnClickListener {
+            val title = etComment.text.toString().trim()
+            val description = etDescriptionModalPost.text.toString().trim()
+            val imageUrl = etImageUrlModalPost.text.toString().trim()
+
+            if (title.isEmpty() || description.isEmpty() || imageUrl.isEmpty()) {
+                Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+            } else {
+                // Todos los campos están llenos, realizar la acción correspondiente aquí
+                // Por ejemplo, llamar a una función para crear el post con los datos proporcionados
+                //createPost(title, description, imageUrl)
+                val user = preferences.getUser()
+
+                val userResource = UserResource(user.id.toLong())
+                val createPostResource = CreatePostResource(title, description, imageUrl, userResource)
+
+                user.token?.let {
+                    postService
+                        .createComment("Bearer " + it, createPostResource)
+                        .enqueue(object : Callback<Post> {
+                            override fun onResponse(call: Call<Post>, response: Response<Post>) {
+                                if (response.isSuccessful) {
+                                    val newPost = response.body() // Obtener el comentario creado
+                                    if (newPost != null) {
+                                        //commentsAdapter.addComment(newComment) // Agregar el comentario a la lista
+                                        // Actualizar la vista del RecyclerView si es necesario
+                                        //rvComments.scrollToPosition(commentsAdapter.itemCount - 1)
+                                        filteredPosts.add(newPost)
+                                        postsAdapter.notifyDataSetChanged()
+                                        binding.rvPostsCommunity.scrollToPosition(postsAdapter.itemCount - 1)
+                                        //rvPo.scrollToPosition(commentsAdapter.itemCount - 1)
+                                    }
+
+                                    Toast.makeText(context, "EXITO", Toast.LENGTH_SHORT).show()
+                                } else {
+                                    // Error al crear el comentario, manejar el error de acuerdo a tus necesidades
+                                    Toast.makeText(context, "ERROR", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+
+                            override fun onFailure(call: Call<Post>, t: Throwable) {
+                                TODO("Not yet implemented")
+                            }
+
+                        })
+                }
+
+
+                dialog.dismiss() // Cerrar el diálogo después de crear el post
+            }
+        }
+
+        dialog.show()
     }
 
     private fun loadPosts(coachId: Long) {
@@ -122,8 +207,12 @@ class CommunityFragment : Fragment() {
                 isCoach = true
         }
 
-        if(isCoach)
+        if(isCoach) {
+            binding.tvusernameCommunity.text = user.username
+            binding.tvEmailCommunity.text = user.email
+
             getFollowersByCoachId(user.id.toLong())
+        }
         else
             getClientFollow(user.id.toLong())
     }
