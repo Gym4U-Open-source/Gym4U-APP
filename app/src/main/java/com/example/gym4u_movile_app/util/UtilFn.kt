@@ -3,6 +3,7 @@ package com.example.gym4u_movile_app.util
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
@@ -12,6 +13,9 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.gym4u_movile_app.entities.User
+import com.example.gym4u_movile_app.enums.Roles
 import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
 
@@ -20,6 +24,7 @@ class UtilFn {
         fun toUTF8String(text: String, fromCharset: Charset = StandardCharsets.ISO_8859_1): String {
             return String(text.toByteArray(fromCharset), StandardCharsets.UTF_8)
         }
+        fun String.toUTF8(fromCharset: Charset = StandardCharsets.ISO_8859_1) = String(toByteArray(fromCharset), StandardCharsets.UTF_8)
         private fun showToast(context: Context, stringId: Int, time: Int) = Toast.makeText(context, stringId, time).show()
         private fun showToast(context: Context, charSequence: CharSequence, time: Int) = Toast.makeText(context, charSequence, time).show()
 
@@ -33,6 +38,8 @@ class UtilFn {
                 .lowercase()
                 .contains(toContain.lowercase())
         }
+
+        fun String.textContainAnyCase(toContain: String) = lowercase().contains(toContain.lowercase())
 
         fun apiIsHigherThat(apiCode: Int) = Build.VERSION.SDK_INT > apiCode
         fun fullScreenUi(): Int {
@@ -51,6 +58,8 @@ class UtilFn {
         fun AppCompatActivity.showShortToast(@StringRes stringId: Int) = showShortToast(this, stringId)
         fun AppCompatActivity.showShortToast(charSequence: CharSequence) = showShortToast(this, charSequence)
         fun AppCompatActivity.startActivityAndClean(cls: Class<*>) = startActivity(Intent(this, cls).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
+        fun AppCompatActivity.debugLog(tag: String, message: String) = Log.d(tag, message)
+        fun Fragment.debugLog(tag: String, message: String) = Log.d(tag, message)
         fun EditText.isEmpty() = text.isEmpty()
         fun EditText.textString() = text.toString()
         fun EditText.isNotEmpty() = text.isNotEmpty()
@@ -58,6 +67,6 @@ class UtilFn {
         fun Spinner.selectedString() = selectedItem.toString()
         fun EditText.areEqual(editText: EditText) = !areDifferent(editText)
         fun String.isEmail() = matches(Regex("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"))
-
+        fun User.isCoach() = roles.contains(Roles.COACH.name)
     }
 }

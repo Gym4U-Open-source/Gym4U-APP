@@ -7,7 +7,7 @@ import com.example.gym4u_movile_app.databinding.PrototypeFollowersBinding
 import com.example.gym4u_movile_app.entities.Follower
 import com.example.gym4u_movile_app.entities.FollowerUser
 import com.example.gym4u_movile_app.ui.inbox.InboxFragmentDirections
-import com.example.gym4u_movile_app.util.UtilFn.Companion.toUTF8String
+import com.example.gym4u_movile_app.util.UtilFn.Companion.toUTF8
 
 class FollowersAdapter(
     private val followers: List<Follower>,
@@ -16,10 +16,10 @@ class FollowersAdapter(
     inner class Holder(private val binding: PrototypeFollowersBinding) : RecyclerView.ViewHolder(binding.root) {
 
         private fun initFollower(user: FollowerUser) {
-            val username = toUTF8String(user.username)
+            val username = user.username.toUTF8()
             binding.tvChatAvatar.text = username[0].uppercase()
             binding.tvChatName.text = username
-            binding.tvLastMessage.text = toUTF8String(user.email)
+            binding.tvLastMessage.text = user.email.toUTF8()
         }
         private fun navigateFollower(follower: Follower): NavDirections {
             return if(senderIsCoach)

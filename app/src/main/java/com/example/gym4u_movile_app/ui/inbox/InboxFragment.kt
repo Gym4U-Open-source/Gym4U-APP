@@ -17,7 +17,9 @@ import com.example.gym4u_movile_app.entities.Follower
 import com.example.gym4u_movile_app.enums.Roles
 import com.example.gym4u_movile_app.services.FollowerService
 import com.example.gym4u_movile_app.util.AppPreferences
+import com.example.gym4u_movile_app.util.AppPreferences.Companion.preferences
 import com.example.gym4u_movile_app.util.RetrofitBuilder
+import com.example.gym4u_movile_app.util.UtilFn.Companion.isCoach
 import com.example.gym4u_movile_app.util.UtilFn.Companion.textContainAnyCase
 import com.google.gson.Gson
 import retrofit2.Call
@@ -28,7 +30,6 @@ class InboxFragment : Fragment() {
 
 
     private lateinit var binding: FragmentInboxBinding
-    private lateinit var preferences: AppPreferences
     private val followers = ArrayList<Follower>()
     private val filteredFollowers = ArrayList<Follower>()
     private val followerService = RetrofitBuilder.build().create(FollowerService::class.java)
@@ -45,7 +46,6 @@ class InboxFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        preferences = AppPreferences(requireContext())
         loadFollowers()
         loadViews()
     }
@@ -85,11 +85,7 @@ class InboxFragment : Fragment() {
 
     private fun loadFollowers() {
         val user = preferences.getUser()
-        user.roles.forEach {
-            if(it == Roles.COACH.name)
-                isCoach = true
-        }
-
+        isCoach = user.isCoach()
         if(isCoach)
             followerService
                 .getFollowers(user.id.toLong())

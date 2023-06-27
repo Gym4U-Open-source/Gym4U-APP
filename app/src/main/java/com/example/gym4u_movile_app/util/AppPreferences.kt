@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.gym4u_movile_app.entities.User
 import com.google.gson.Gson
 
@@ -15,6 +16,7 @@ class AppPreferences(context: Context) {
         const val USER = "USER"
 
         val AppCompatActivity.preferences: AppPreferences get() = AppPreferences(this)
+        val Fragment.preferences: AppPreferences get() = AppPreferences(requireContext())
     }
 
     private fun userToString(user: User): String = gson.toJson(user)

@@ -19,7 +19,7 @@ import com.example.gym4u_movile_app.services.ConversationService
 import com.example.gym4u_movile_app.services.MessageService
 import com.example.gym4u_movile_app.util.RetrofitBuilder
 import com.example.gym4u_movile_app.util.UtilFn
-import com.example.gym4u_movile_app.util.UtilFn.Companion.toUTF8String
+import com.example.gym4u_movile_app.util.UtilFn.Companion.toUTF8
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -84,10 +84,7 @@ class ConversationFragment : Fragment() {
         }
     }
 
-    private fun createConversationResource(coach: FollowerUser, client: FollowerUser): ConversationResource {
-        return ConversationResource(coach, client)
-    }
-
+    private fun createConversationResource(coach: FollowerUser, client: FollowerUser) = ConversationResource(coach, client)
     private fun createConversation() {
 
         conversationService
@@ -134,7 +131,7 @@ class ConversationFragment : Fragment() {
     }
 
     private fun loadMessages() {
-        val username = toUTF8String(args.receiver.username)
+        val username = args.receiver.username.toUTF8()
         binding.tvConversationChatName.text = username
         binding.tvConversationChatAvatar.text = username[0].uppercase()
 

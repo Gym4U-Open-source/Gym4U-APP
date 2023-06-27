@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.gym4u_movile_app.databinding.PrototypeMessageBinding
 import com.example.gym4u_movile_app.entities.Message
-import com.example.gym4u_movile_app.util.UtilFn.Companion.toUTF8String
+import com.example.gym4u_movile_app.util.UtilFn.Companion.toUTF8
 
 
 class MessagesAdapter(
@@ -19,7 +19,7 @@ class MessagesAdapter(
     inner class Holder(private val binding: PrototypeMessageBinding) : ViewHolder(binding.root) {
 
         fun bind(message: Message) {
-            binding.tvUserMessage.text = toUTF8String(message.message)
+            binding.tvUserMessage.text = message.message.toUTF8()
             val parameters = binding.cvUserMessage.layoutParams as ConstraintLayout.LayoutParams
             if(to == message.userId)
                 parameters.horizontalBias = 0.05f
