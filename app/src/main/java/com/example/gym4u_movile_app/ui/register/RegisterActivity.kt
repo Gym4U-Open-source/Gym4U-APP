@@ -1,5 +1,6 @@
 package com.example.gym4u_movile_app.ui.register
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
@@ -63,6 +64,11 @@ class RegisterActivity : AppCompatActivity() {
             showShortToast(R.string.insert_a_valid_email)
             return false
         }
+        if(!binding.cbTermsAndConditions.isChecked)
+        {
+            showShortToast(R.string.accept_terms_and_conditions)
+            return false
+        }
 
         return true
     }
@@ -98,6 +104,9 @@ class RegisterActivity : AppCompatActivity() {
                 register()
         }
         binding.tvSignInAction.setOnClickListener { toLogin() }
+        binding.tvTermsAndConditions.setOnClickListener {
+            startActivity(Intent(this, TermsAndConditionsActivity::class.java))
+        }
     }
 
     private fun initViews() {
