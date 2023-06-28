@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.gym4u_movile_app.databinding.ActivityItemExerciseeBinding
 import com.example.gym4u_movile_app.databinding.ActivityNewWorkoutBinding
 import com.example.gym4u_movile_app.entities.BaseResponse
 import com.example.gym4u_movile_app.entities.Exercise
@@ -22,6 +23,8 @@ import retrofit2.Response
 class NewWorkoutActivity : AppCompatActivity() {
     var workouts = ArrayList<Exercise>()//111111111111111111111
     var adapter22 = ExerciseAdapter(workouts);
+
+    //private lateinit var bindingItem: ActivityItemExerciseeBinding
 
     private lateinit var binding: ActivityNewWorkoutBinding
     private lateinit var amigoos: miSQL
@@ -48,21 +51,6 @@ class NewWorkoutActivity : AppCompatActivity() {
         binding.rvExercisesQ.layoutManager = LinearLayoutManager(this)
         binding.rvExercisesQ.adapter = adapterAmigos
 
-        binding.btnRefresh.setOnClickListener {
-
-            val cursor: Cursor = db.rawQuery(
-                "SELECT * FROM exercises",null)
-
-            val adapterAmigos = ExercisesAdapter()
-            adapterAmigos.ExercisesAdapter(this,cursor)
-
-            binding.rvExercisesQ.setHasFixedSize(true)
-            binding.rvExercisesQ.layoutManager = LinearLayoutManager(this)
-            binding.rvExercisesQ.adapter = adapterAmigos
-        }
-
-
-
         binding.btnAddNewExercises .setOnClickListener {
             val intent = Intent(this, AddExerciseActivity::class.java)
             startActivity(intent)
@@ -72,12 +60,18 @@ class NewWorkoutActivity : AppCompatActivity() {
             val intent = Intent(this, NewWorkoutActivity::class.java)
             startActivity(intent)
         }
-
-
     }
 
     override fun onResume() {
+            val cursor: Cursor = db.rawQuery(
+                "SELECT * FROM exercises",null)
 
+            val adapterAmigos = ExercisesAdapter()
+            adapterAmigos.ExercisesAdapter(this,cursor)
+
+            binding.rvExercisesQ.setHasFixedSize(true)
+            binding.rvExercisesQ.layoutManager = LinearLayoutManager(this)
+            binding.rvExercisesQ.adapter = adapterAmigos
         super.onResume()
     }
 
@@ -95,7 +89,6 @@ class NewWorkoutActivity : AppCompatActivity() {
     }
 
     private  fun loadExercises(){
-
 
         val retrofit = RetrofitBuilder.build()
 
