@@ -21,9 +21,7 @@ import java.nio.charset.StandardCharsets
 
 class UtilFn {
     companion object {
-        fun toUTF8String(text: String, fromCharset: Charset = StandardCharsets.ISO_8859_1): String {
-            return String(text.toByteArray(fromCharset), StandardCharsets.UTF_8)
-        }
+
         fun String.toUTF8(fromCharset: Charset = StandardCharsets.ISO_8859_1) = String(toByteArray(fromCharset), StandardCharsets.UTF_8)
         private fun showToast(context: Context, stringId: Int, time: Int) = Toast.makeText(context, stringId, time).show()
         private fun showToast(context: Context, charSequence: CharSequence, time: Int) = Toast.makeText(context, charSequence, time).show()
@@ -33,11 +31,7 @@ class UtilFn {
 
         fun showLongToast(context: Context, stringId: Int) { showToast(context, stringId, Toast.LENGTH_LONG) }
         fun showLongToast(context: Context, charSequence: CharSequence) { showToast(context, charSequence, Toast.LENGTH_LONG) }
-        fun textContainAnyCase(text: String, toContain: String): Boolean {
-            return text
-                .lowercase()
-                .contains(toContain.lowercase())
-        }
+
 
         fun String.textContainAnyCase(toContain: String) = lowercase().contains(toContain.lowercase())
 

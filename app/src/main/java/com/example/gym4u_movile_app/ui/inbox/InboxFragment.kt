@@ -14,9 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gym4u_movile_app.databinding.FragmentInboxBinding
 import com.example.gym4u_movile_app.entities.BaseResponse
 import com.example.gym4u_movile_app.entities.Follower
-import com.example.gym4u_movile_app.enums.Roles
 import com.example.gym4u_movile_app.services.FollowerService
-import com.example.gym4u_movile_app.util.AppPreferences
 import com.example.gym4u_movile_app.util.AppPreferences.Companion.preferences
 import com.example.gym4u_movile_app.util.RetrofitBuilder
 import com.example.gym4u_movile_app.util.UtilFn.Companion.isCoach
@@ -78,7 +76,7 @@ class InboxFragment : Fragment() {
         filteredFollowers.clear()
         filteredFollowers.addAll(followers)
         if(keyword != null)
-            filteredFollowers.removeIf { follower -> !textContainAnyCase(follower.clientUser.username, keyword) && !textContainAnyCase(follower.clientUser.email, keyword) }
+            filteredFollowers.removeIf { follower -> !follower.clientUser.username.textContainAnyCase(keyword) && !follower.clientUser.email.textContainAnyCase(keyword) }
 
         binding.rvChats.adapter?.notifyDataSetChanged()
     }
