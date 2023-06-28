@@ -8,15 +8,120 @@
     tools:context=".CommunityFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvCircleAvatarText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/this_is_community_fragment"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="TV"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/ivCircleAvatarCommunity"
+        app:layout_constraintEnd_toEndOf="@+id/ivCircleAvatarCommunity"
+        app:layout_constraintStart_toStartOf="@+id/ivCircleAvatarCommunity"
+        app:layout_constraintTop_toTopOf="@+id/ivCircleAvatarCommunity" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivCircleAvatarCommunity"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/circle_avatar_community"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/tvSigCommunity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="TV"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivCircleAvatarCommunity"
+        app:layout_constraintEnd_toEndOf="@+id/ivCircleAvatarCommunity"
+        app:layout_constraintStart_toStartOf="@+id/ivCircleAvatarCommunity"
+        app:layout_constraintTop_toTopOf="@+id/ivCircleAvatarCommunity" />
+
+    <TextView
+        android:id="@+id/tvusernameCommunity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="178dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="175dp"
+        android:text="Username"
+        android:textColor="#131313"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivCircleAvatarCommunity" />
+
+    <TextView
+        android:id="@+id/tvEmailCommunity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="correo"
+        android:textColor="#9F9F9F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvusernameCommunity" />
+
+    <Button
+        android:id="@+id/btNewPostCommunity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="16dp"
+        android:text="+ Crear Post"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvMembersCommunity"
+        app:layout_constraintTop_toBottomOf="@+id/tvusernameCommunity" />
+
+    <TextView
+        android:id="@+id/tvMembersCommunity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="132dp"
+        android:text="0 miembros"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="135dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/usuario_24"
+        app:layout_constraintEnd_toStartOf="@+id/tvMembersCommunity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPostsCommunity"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btNewPostCommunity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

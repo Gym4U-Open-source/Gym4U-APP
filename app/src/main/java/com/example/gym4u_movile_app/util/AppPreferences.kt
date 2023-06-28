@@ -21,7 +21,7 @@ class AppPreferences(context: Context) {
 
     private fun userToString(user: User): String = gson.toJson(user)
     private fun getUserString(): String = preferences.getString(USER, userToString(defaultUser()))!!
-    private fun defaultUser(): User = User(0, "", "", listOf())
+    private fun defaultUser(): User = User(0, "", "", listOf(), "")
     private fun editor(): SharedPreferences.Editor = preferences.edit()
 
     fun saveUser(user: User) {
