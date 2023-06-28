@@ -69,7 +69,11 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun getUserType() = if(binding.spUserTypes.selectedString() == "User") Roles.NORMAL.name else Roles.COACH.name
 
-    private fun toLogin() = startActivityAndClean(LoginActivity::class.java).apply { showShortToast(R.string.register_successfully) }
+    private fun toLogin(ifRegister: Boolean = false) = startActivityAndClean(LoginActivity::class.java).apply {
+        if(ifRegister) {
+            showShortToast(R.string.register_successfully)
+        }
+    }
 
     private fun toRegister(): Register {
         return Register(
@@ -83,7 +87,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun register() {
         userService.register(toRegister())
             .enqueue(object : Callback<User> {
-                override fun onResponse(call: Call<User>, response: Response<User>) = if(response.isSuccessful) toLogin() else showShortToast(R.string.ups_try_again)
+                override fun onResponse(call: Call<User>, response: Response<User>) = if(response.isSuccessful) toLogin(true) else showShortToast(R.string.ups_try_again)
                 override fun onFailure(call: Call<User>, t: Throwable) = showShortToast(R.string.ups_try_again)
             })
     }
