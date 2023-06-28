@@ -8,27 +8,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gym4u_movile_app.PostsAdapter
 import com.example.gym4u_movile_app.databinding.FragmentPostsBinding
 import com.example.gym4u_movile_app.entities.BaseResponse
-import com.example.gym4u_movile_app.entities.Comment
-import com.example.gym4u_movile_app.entities.Follower
 import com.example.gym4u_movile_app.entities.Post
-import com.example.gym4u_movile_app.entities.Profile
-import com.example.gym4u_movile_app.entities.Role
-import com.example.gym4u_movile_app.entities.User
 import com.example.gym4u_movile_app.services.PostService
 import com.example.gym4u_movile_app.util.RetrofitBuilder
-import com.example.gym4u_movile_app.util.UtilFn
+import com.example.gym4u_movile_app.util.UtilFn.Companion.textContainAnyCase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class PostsFragment : Fragment() {
 
@@ -86,11 +78,8 @@ class PostsFragment : Fragment() {
         filteredPosts.addAll(posts)
         if(keyword != null)
             filteredPosts.removeIf { post -> !post.description?.let {
-                UtilFn.textContainAnyCase(
-                    it,
-                    keyword
-                )
-            }!! && !UtilFn.textContainAnyCase(post.description, keyword)
+                it.textContainAnyCase(keyword)
+            }!! && !post.description.textContainAnyCase(keyword)
             }
 
         binding.rvposts.adapter?.notifyDataSetChanged()
