@@ -80,11 +80,13 @@ class ListWorkoutActivity : AppCompatActivity() {
                 call: Call<BaseResponse<WORKOUTT>>,
                 response: Response<BaseResponse<WORKOUTT>>
             ) {
-                response.body()!!.content.forEach {
-                    workouts.add(it)
-                }
+                if(response.isSuccessful) {
+                    response.body()!!.content.forEach {
+                        workouts.add(it)
+                    }
 
-                adapterWorkout.notifyDataSetChanged()
+                    adapterWorkout.notifyDataSetChanged()
+                }
                 Log.d("Exercise", workouts[0].id.toString())
             }
 

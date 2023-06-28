@@ -1,16 +1,12 @@
 package com.example.gym4u_movile_app
 
-import android.content.Intent
-import android.database.sqlite.SQLiteDatabase
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.CursorAdapter
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.gym4u_movile_app.databinding.ActivityAddExerciseBinding
 import com.example.gym4u_movile_app.entities.miSQL
+import com.example.gym4u_movile_app.util.UtilFn.Companion.showShortToast
 
-class add_exercise : AppCompatActivity() {
+class AddExerciseActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityAddExerciseBinding
     lateinit var exercisesDb: miSQL
@@ -43,11 +39,10 @@ class add_exercise : AppCompatActivity() {
                 binding.inputUrlImage.text!!.clear()
                 binding.inputCountSet.text!!.clear()
                 binding.inputTimeSet.text!!.clear()
-                Toast.makeText(this,"El ejercicio se ah guardado", Toast.LENGTH_SHORT).show()
+                showShortToast("El ejercicio se ah guardado")
+                finish()
             }
-            else{
-                Toast.makeText(this,"No se ah podido guardar el ejercicio", Toast.LENGTH_SHORT).show()
-            }
+            else showShortToast("No se ah podido guardar el ejercicio")
 
 
 //            binding.datos.text = ""

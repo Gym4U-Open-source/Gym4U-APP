@@ -8,10 +8,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gym4u_movile_app.ExerciseAdapter
 import com.example.gym4u_movile_app.R
 import com.example.gym4u_movile_app.databinding.ActivityItemExerciseeBinding
-import com.example.gym4u_movile_app.item_exercisee
 
 class ExercisesAdapter
     : RecyclerView.Adapter<ExercisesAdapter.ViewHolder>(){

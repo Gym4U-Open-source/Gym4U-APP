@@ -17,30 +17,28 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".item_exercisee"
+            android:name=".ItemExerciseActivity"
             android:exported="false" />
+
         <activity
-            android:name=".ui.library.add_library"
+            android:name=".ui.library.LibraryActivity"
             android:exported="false" />
+
         <activity
-            android:name=".ui.library.library_activity"
-            android:exported="false" />
+            android:name=".ui.register.RegisterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Gym4UMovileAPP.NoActionBar" />
+
         <activity
-            android:name=".ui.library.addexercise_activity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.library.activity_Library"
-            android:exported="false" />
-        <activity
-            android:name=".List_Workout"
+            android:name=".ListWorkoutActivity"
             android:exported="false" /> <!-- <meta-data -->
         <!-- android:name="com.google.android.actions" -->
         <!-- android:resource="@xml/prototype_workout" /> -->
         <activity
-            android:name=".add_exercise"
+            android:name=".AddExerciseActivity"
             android:exported="false" />
         <activity
-            android:name=".new_workout"
+            android:name=".NewWorkoutActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -49,7 +47,7 @@
             android:name=".ui.login.LoginActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Gym4UMovileAPP.Login">
+            android:theme="@style/Theme.Gym4UMovileAPP.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

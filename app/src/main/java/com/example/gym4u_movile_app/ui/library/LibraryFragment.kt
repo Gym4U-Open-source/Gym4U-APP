@@ -1,4 +1,3 @@
-//date: 02/06/2023: 01:04am
 
 package com.example.gym4u_movile_app.ui.library
 
@@ -23,13 +22,13 @@ class LibraryFragment : Fragment() {
 
         val tvPrueba = view.findViewById<TextView>(R.id.tvExercise)
         tvPrueba.setOnClickListener{
-            val intenttt = Intent(activity, LibraryActivity::class.java)
+            val intenttt = Intent(requireContext(), LibraryActivity::class.java)
             startActivity(intenttt)
         }
 
         val tvPrueba1 = view.findViewById<TextView>(R.id.tvWorkouts)
         tvPrueba1.setOnClickListener{
-            val intentt = Intent(activity, ListWorkoutActivity::class.java)
+            val intentt = Intent(requireContext(), ListWorkoutActivity::class.java)
             startActivity(intentt)
         }
 

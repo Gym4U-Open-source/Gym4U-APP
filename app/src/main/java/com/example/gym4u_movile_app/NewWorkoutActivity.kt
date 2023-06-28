@@ -7,25 +7,19 @@ import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.databinding.ActivityNewWorkoutBinding
 import com.example.gym4u_movile_app.entities.BaseResponse
 import com.example.gym4u_movile_app.entities.Exercise
 import com.example.gym4u_movile_app.entities.miSQL
 import com.example.gym4u_movile_app.services.ExerciseService
 import com.example.gym4u_movile_app.ui.clients.ExercisesAdapter
-import com.example.gym4u_movile_app.ui.library.LibraryFragment
 import com.example.gym4u_movile_app.util.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
-class new_workout : AppCompatActivity() {
+class NewWorkoutActivity : AppCompatActivity() {
     var workouts = ArrayList<Exercise>()//111111111111111111111
     var adapter22 = ExerciseAdapter(workouts);
 
@@ -70,16 +64,21 @@ class new_workout : AppCompatActivity() {
 
 
         binding.btnAddNewExercises .setOnClickListener {
-            val intent = Intent(this, add_exercise::class.java)
+            val intent = Intent(this, AddExerciseActivity::class.java)
             startActivity(intent)
         }
 
         binding.btnAddWorkout.setOnClickListener {
-            val intent = Intent(this, new_workout::class.java)
+            val intent = Intent(this, NewWorkoutActivity::class.java)
             startActivity(intent)
         }
 
 
+    }
+
+    override fun onResume() {
+
+        super.onResume()
     }
 
     override fun onDestroy() {
