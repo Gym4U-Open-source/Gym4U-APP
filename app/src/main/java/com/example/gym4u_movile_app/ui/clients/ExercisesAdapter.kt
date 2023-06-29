@@ -7,18 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.R
 import com.example.gym4u_movile_app.databinding.ActivityItemExerciseeBinding
-import com.example.gym4u_movile_app.databinding.ActivityNewWorkoutBinding
-import com.example.gym4u_movile_app.entities.miSQL
-import com.example.gym4u_movile_app.entities.miSQLWorkouts
+import com.example.gym4u_movile_app.database.miSQLWorkouts
 import com.example.gym4u_movile_app.util.UtilFn
-import com.example.gym4u_movile_app.util.UtilFn.Companion.showShortToast
-import com.example.gym4u_movile_app.util.UtilFn.Companion.showShortToast
 
 class ExercisesAdapter
     : RecyclerView.Adapter<ExercisesAdapter.ViewHolder>(){

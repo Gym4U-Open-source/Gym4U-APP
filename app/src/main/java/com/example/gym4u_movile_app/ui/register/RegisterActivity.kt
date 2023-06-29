@@ -6,8 +6,8 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gym4u_movile_app.R
 import com.example.gym4u_movile_app.databinding.ActivityRegisterBinding
-import com.example.gym4u_movile_app.entities.Register
-import com.example.gym4u_movile_app.entities.User
+import com.example.gym4u_movile_app.models.Register
+import com.example.gym4u_movile_app.models.User
 import com.example.gym4u_movile_app.enums.Roles
 import com.example.gym4u_movile_app.services.UserService
 import com.example.gym4u_movile_app.ui.login.LoginActivity

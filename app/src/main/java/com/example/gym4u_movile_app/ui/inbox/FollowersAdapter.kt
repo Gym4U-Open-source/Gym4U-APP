@@ -4,8 +4,8 @@ import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.databinding.PrototypeFollowersBinding
-import com.example.gym4u_movile_app.entities.Follower
-import com.example.gym4u_movile_app.entities.FollowerUser
+import com.example.gym4u_movile_app.models.Follower
+import com.example.gym4u_movile_app.models.FollowerUser
 import com.example.gym4u_movile_app.ui.inbox.InboxFragmentDirections
 import com.example.gym4u_movile_app.util.UtilFn.Companion.toUTF8
 

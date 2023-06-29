@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.R
-import com.example.gym4u_movile_app.entities.Routines
+import com.example.gym4u_movile_app.models.Routines
 
 class RoutineAdapter(var routines: List<Routines>): RecyclerView.Adapter<RoutinePrototype>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoutinePrototype {

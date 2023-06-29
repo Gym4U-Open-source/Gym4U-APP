@@ -10,11 +10,11 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gym4u_movile_app.R
 import com.example.gym4u_movile_app.databinding.FragmentConversationBinding
-import com.example.gym4u_movile_app.entities.Conversation
-import com.example.gym4u_movile_app.entities.FollowerUser
-import com.example.gym4u_movile_app.entities.Message
-import com.example.gym4u_movile_app.entities.resources.ConversationResource
-import com.example.gym4u_movile_app.entities.resources.MessageResource
+import com.example.gym4u_movile_app.models.Conversation
+import com.example.gym4u_movile_app.models.FollowerUser
+import com.example.gym4u_movile_app.models.Message
+import com.example.gym4u_movile_app.models.resources.ConversationResource
+import com.example.gym4u_movile_app.models.resources.MessageResource
 import com.example.gym4u_movile_app.services.ConversationService
 import com.example.gym4u_movile_app.services.MessageService
 import com.example.gym4u_movile_app.util.RetrofitBuilder

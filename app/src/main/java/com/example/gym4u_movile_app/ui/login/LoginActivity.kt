@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.gym4u_movile_app.MainActivity
 import com.example.gym4u_movile_app.R
 import com.example.gym4u_movile_app.databinding.ActivityLoginBinding
-import com.example.gym4u_movile_app.entities.Login
-import com.example.gym4u_movile_app.entities.LoginResponse
+import com.example.gym4u_movile_app.models.Login
+import com.example.gym4u_movile_app.models.LoginResponse
 import com.example.gym4u_movile_app.services.UserService
 import com.example.gym4u_movile_app.ui.register.RegisterActivity
 import com.example.gym4u_movile_app.util.AppPreferences.Companion.preferences

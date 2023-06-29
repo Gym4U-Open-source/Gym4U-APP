@@ -1,9 +1,9 @@
 package com.example.gym4u_movile_app.services
 
-import com.example.gym4u_movile_app.entities.Login
-import com.example.gym4u_movile_app.entities.LoginResponse
-import com.example.gym4u_movile_app.entities.Register
-import com.example.gym4u_movile_app.entities.User
+import com.example.gym4u_movile_app.models.Login
+import com.example.gym4u_movile_app.models.LoginResponse
+import com.example.gym4u_movile_app.models.Register
+import com.example.gym4u_movile_app.models.User
 import com.example.gym4u_movile_app.util.ApiPaths
 import retrofit2.http.Body
 import retrofit2.http.POST

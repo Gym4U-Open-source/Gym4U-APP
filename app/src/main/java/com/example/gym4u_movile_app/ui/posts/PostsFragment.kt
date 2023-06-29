@@ -11,10 +11,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.gym4u_movile_app.PostsAdapter
 import com.example.gym4u_movile_app.databinding.FragmentPostsBinding
-import com.example.gym4u_movile_app.entities.BaseResponse
-import com.example.gym4u_movile_app.entities.Post
+import com.example.gym4u_movile_app.models.BaseResponse
+import com.example.gym4u_movile_app.models.Post
 import com.example.gym4u_movile_app.services.PostService
 import com.example.gym4u_movile_app.util.RetrofitBuilder
 import com.example.gym4u_movile_app.util.UtilFn.Companion.textContainAnyCase

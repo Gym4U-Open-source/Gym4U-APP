@@ -12,8 +12,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gym4u_movile_app.databinding.FragmentInboxBinding
-import com.example.gym4u_movile_app.entities.BaseResponse
-import com.example.gym4u_movile_app.entities.Follower
+import com.example.gym4u_movile_app.models.BaseResponse
+import com.example.gym4u_movile_app.models.Follower
 import com.example.gym4u_movile_app.services.FollowerService
 import com.example.gym4u_movile_app.util.AppPreferences.Companion.preferences
 import com.example.gym4u_movile_app.util.RetrofitBuilder

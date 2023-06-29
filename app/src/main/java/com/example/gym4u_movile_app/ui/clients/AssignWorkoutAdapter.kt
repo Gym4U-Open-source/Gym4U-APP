@@ -5,10 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import com.example.gym4u_movile_app.entities.WORKOUTT
-import java.util.Objects
+import com.example.gym4u_movile_app.models.WorkoutExercises
 
-class AssignWorkoutAdapter(context: Context, resource: Int, objects: List<WORKOUTT>) : ArrayAdapter<WORKOUTT>(context,resource,objects) {
+class AssignWorkoutAdapter(context: Context, resource: Int, objects: List<WorkoutExercises>) : ArrayAdapter<WorkoutExercises>(context,resource,objects) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view = super.getView(position, convertView, parent)

@@ -6,11 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.R
-import com.example.gym4u_movile_app.entities.Client
+import com.example.gym4u_movile_app.models.Client
 
 class ClientAdapter(var clients: List<Client>): RecyclerView.Adapter<ClientPrototype>() {
 

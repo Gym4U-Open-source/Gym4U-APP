@@ -5,7 +5,7 @@ import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.gym4u_movile_app.entities.User
+import com.example.gym4u_movile_app.models.User
 import com.google.gson.Gson
 
 class AppPreferences(context: Context) {

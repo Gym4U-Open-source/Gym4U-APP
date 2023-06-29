@@ -45,7 +45,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_posts,
                 R.id.navigation_library,
                 R.id.navigation_community,
-                R.id.navigation_conversation
+                R.id.navigation_conversation,
+                R.id.clientFragment,
+                R.id.routineFragment,
+                R.id.assignWorkout
             )
         )
 

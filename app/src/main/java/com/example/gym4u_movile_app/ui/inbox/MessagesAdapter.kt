@@ -6,7 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.gym4u_movile_app.databinding.PrototypeMessageBinding
-import com.example.gym4u_movile_app.entities.Message
+import com.example.gym4u_movile_app.models.Message
 import com.example.gym4u_movile_app.util.UtilFn.Companion.toUTF8
 
 

@@ -20,7 +20,7 @@
             android:name=".ui.register.TermsAndConditionsActivity"
             android:exported="false" />
         <activity
-            android:name=".ItemExerciseActivity"
+            android:name=".ui.library.ItemExerciseActivity"
             android:exported="false" />
         <activity
             android:name=".ui.library.LibraryActivity"
@@ -30,15 +30,15 @@
             android:exported="false"
             android:theme="@style/Theme.Gym4UMovileAPP.NoActionBar" />
         <activity
-            android:name=".ListWorkoutActivity"
+            android:name=".ui.library.ListWorkoutActivity"
             android:exported="false" /> <!-- <meta-data -->
         <!-- android:name="com.google.android.actions" -->
         <!-- android:resource="@xml/prototype_workout" /> -->
         <activity
-            android:name=".AddExerciseActivity"
+            android:name=".ui.library.AddExerciseActivity"
             android:exported="false" />
         <activity
-            android:name=".NewWorkoutActivity"
+            android:name=".ui.library.NewWorkoutActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -7,29 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.Spinner
-import android.widget.TextView
-import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.R
-import com.example.gym4u_movile_app.entities.BaseResponse
-import com.example.gym4u_movile_app.entities.Client
-import com.example.gym4u_movile_app.entities.ClientWorkout
-import com.example.gym4u_movile_app.entities.WORKOUTT
+import com.example.gym4u_movile_app.models.BaseResponse
+import com.example.gym4u_movile_app.models.Client
+import com.example.gym4u_movile_app.models.ClientWorkout
+import com.example.gym4u_movile_app.models.WorkoutExercises
 import com.example.gym4u_movile_app.services.ClientWorkoutService
 import com.example.gym4u_movile_app.services.WorkoutService
 import com.example.gym4u_movile_app.util.RetrofitBuilder
-import okhttp3.MediaType
-import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class AssignWorkout : Fragment() {
 
@@ -62,16 +52,16 @@ class AssignWorkout : Fragment() {
         workoutService = retrofit.create(WorkoutService::class.java)
         val request = workoutService.getAll()
 
-        request.enqueue(object : Callback<BaseResponse<WORKOUTT>> {
-            override fun onResponse(call: Call<BaseResponse<WORKOUTT>>, response: Response<BaseResponse<WORKOUTT>>) {
+        request.enqueue(object : Callback<BaseResponse<WorkoutExercises>> {
+            override fun onResponse(call: Call<BaseResponse<WorkoutExercises>>, response: Response<BaseResponse<WorkoutExercises>>) {
                 if(response.isSuccessful){
-                    val workouts: List<WORKOUTT> = response.body()!!.content
+                    val workouts: List<WorkoutExercises> = response.body()!!.content
                     val adapter = AssignWorkoutAdapter(requireContext(), android.R.layout.simple_spinner_item, workouts)
                     spWorkout.adapter = adapter
 
                     spWorkout.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                         override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                            val selectedWorkout: WORKOUTT = workouts[p2]
+                            val selectedWorkout: WorkoutExercises = workouts[p2]
 
                             btAssigned.setOnClickListener {
 
@@ -107,7 +97,7 @@ class AssignWorkout : Fragment() {
                 }
             }
 
-            override fun onFailure(call: Call<BaseResponse<WORKOUTT>>, t: Throwable) {
+            override fun onFailure(call: Call<BaseResponse<WorkoutExercises>>, t: Throwable) {
                 Log.d("Activity Fail", "Error: "+t.toString())
             }
 

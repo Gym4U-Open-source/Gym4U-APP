@@ -49,7 +49,7 @@
 
     <fragment
         android:id="@+id/navigation_community"
-        android:name="com.example.gym4u_movile_app.CommunityFragment"
+        android:name="com.example.gym4u_movile_app.ui.community.CommunityFragment"
         android:label="@string/title_community"
         tools:layout="@layout/fragment_community" />
 
@@ -60,10 +60,10 @@
         tools:layout="@layout/fragment_conversation">
         <argument
             android:name="sender"
-            app:argType="com.example.gym4u_movile_app.entities.FollowerUser" />
+            app:argType="com.example.gym4u_movile_app.models.FollowerUser" />
         <argument
             android:name="receiver"
-            app:argType="com.example.gym4u_movile_app.entities.FollowerUser" />
+            app:argType="com.example.gym4u_movile_app.models.FollowerUser" />
         <argument
             android:name="senderIsCoach"
             app:argType="boolean"
@@ -98,6 +98,5 @@
         android:name="com.example.gym4u_movile_app.ui.clients.RoutineFragment"
         android:label="fragment_routine"
         tools:layout="@layout/fragment_routine" />
-
 
 </navigation>

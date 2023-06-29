@@ -9,11 +9,10 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gym4u_movile_app.LibraryAdapter
 import com.example.gym4u_movile_app.R
-import com.example.gym4u_movile_app.entities.BaseResponse
-import com.example.gym4u_movile_app.entities.Library
-import com.example.gym4u_movile_app.entities.Tags
+import com.example.gym4u_movile_app.models.BaseResponse
+import com.example.gym4u_movile_app.models.Library
+import com.example.gym4u_movile_app.models.Tags
 import com.example.gym4u_movile_app.services.LibraryService
 import com.example.gym4u_movile_app.util.RetrofitBuilder
 import retrofit2.Call

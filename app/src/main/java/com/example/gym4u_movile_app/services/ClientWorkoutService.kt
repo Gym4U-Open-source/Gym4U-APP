@@ -1,10 +1,7 @@
 package com.example.gym4u_movile_app.services
 
-import androidx.activity.result.PickVisualMediaRequest
-import com.example.gym4u_movile_app.entities.BaseResponse
-import com.example.gym4u_movile_app.entities.ClientWorkout
-import okhttp3.RequestBody
-import okhttp3.ResponseBody
+import com.example.gym4u_movile_app.models.BaseResponse
+import com.example.gym4u_movile_app.models.ClientWorkout
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE

@@ -1,7 +1,7 @@
 package com.example.gym4u_movile_app.services
 
-import com.example.gym4u_movile_app.entities.BaseResponse
-import com.example.gym4u_movile_app.entities.Library
+import com.example.gym4u_movile_app.models.BaseResponse
+import com.example.gym4u_movile_app.models.Library
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.POST

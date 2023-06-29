@@ -1,10 +1,8 @@
 package com.example.gym4u_movile_app.services
 
-import com.example.gym4u_movile_app.entities.BaseResponse
-import com.example.gym4u_movile_app.entities.Comment
-import com.example.gym4u_movile_app.entities.Conversation
-import com.example.gym4u_movile_app.entities.resources.ConversationResource
-import com.example.gym4u_movile_app.entities.resources.CreateCommentResource
+import com.example.gym4u_movile_app.models.BaseResponse
+import com.example.gym4u_movile_app.models.Comment
+import com.example.gym4u_movile_app.models.resources.CreateCommentResource
 import com.example.gym4u_movile_app.util.ApiPaths
 import retrofit2.Call
 import retrofit2.http.Body

@@ -7,19 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import androidx.core.app.ActivityCompat.recreate
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gym4u_movile_app.R
-import com.example.gym4u_movile_app.entities.Client
-import com.example.gym4u_movile_app.entities.ClientWorkout
+import com.example.gym4u_movile_app.models.ClientWorkout
 import com.example.gym4u_movile_app.services.ClientWorkoutService
 import com.example.gym4u_movile_app.util.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class ClientWorkoutAdapter(var clientsWorkouts: List<ClientWorkout>/*, val onDeleteClickListener: OnDeleteClickListener*/): RecyclerView.Adapter<ClientWorkoutPrototype>(){
 

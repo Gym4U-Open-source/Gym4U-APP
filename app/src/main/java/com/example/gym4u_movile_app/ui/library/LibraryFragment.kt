@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.example.gym4u_movile_app.ListWorkoutActivity
 import com.example.gym4u_movile_app.R
 
 

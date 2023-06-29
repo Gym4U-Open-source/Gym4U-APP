@@ -14,7 +14,7 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.gym4u_movile_app.entities.User
+import com.example.gym4u_movile_app.models.User
 import com.example.gym4u_movile_app.enums.Roles
 import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets

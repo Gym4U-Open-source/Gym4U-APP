@@ -1,8 +1,8 @@
 package com.example.gym4u_movile_app.services
 
-import com.example.gym4u_movile_app.entities.BaseResponse
-import com.example.gym4u_movile_app.entities.Message
-import com.example.gym4u_movile_app.entities.resources.MessageResource
+import com.example.gym4u_movile_app.models.BaseResponse
+import com.example.gym4u_movile_app.models.Message
+import com.example.gym4u_movile_app.models.resources.MessageResource
 import com.example.gym4u_movile_app.util.ApiPaths
 import retrofit2.http.GET
 import retrofit2.http.Path
